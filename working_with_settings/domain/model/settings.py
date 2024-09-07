@@ -1,6 +1,4 @@
 class Settings:
-    # В проде такие вещи должны быть immutable
-    # Если очень хочется, cделать Builder
     def __init__(self):
         self._organization_name = ''
         self._inn = ''
