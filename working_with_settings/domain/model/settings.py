@@ -1,5 +1,11 @@
-class Settings:
+from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException, InvalidLengthException, \
+    InvalidFormatException
+from working_with_settings.domain.model.base.base_model import BaseModel
+
+
+class Settings(BaseModel):
     def __init__(self):
+        super().__init__()
         self._organization_name = ''
         self._inn = ''
         self._director_name = ''
@@ -11,7 +17,7 @@ class Settings:
     @organization_name.setter
     def organization_name(self, value: str):
         if not isinstance(value, str):
-            raise TypeError('organization_name must be str')
+            raise InvalidTypeException(str, type(value))
         self._organization_name = value
 
     @property
@@ -21,11 +27,11 @@ class Settings:
     @inn.setter
     def inn(self, value: str):
         if not isinstance(value, str):
-            raise TypeError('inn must be str')
+            raise InvalidTypeException(str, type(value))
         if not value.isdigit():
-            raise ValueError('inn must be digits')
+            raise InvalidFormatException('digits', value)
         if len(value) != 12:
-            raise ValueError('inn must be 12 chars long')
+            raise InvalidLengthException(12, len(value))
         self._inn = value
 
     @property
@@ -37,6 +43,3 @@ class Settings:
         if not isinstance(value, str):
             raise TypeError('director_name must be str')
         self._director_name = value
-
-    def __str__(self):
-        return f'organization_name: {self.organization_name}, inn: {self.inn}, director_name: {self.director_name}'
