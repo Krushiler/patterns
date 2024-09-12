@@ -18,3 +18,7 @@ class AppException(Exception):
 
     def __repr__(self):
         return self.message
+
+
+class ArgumentException(AppException):
+    pass

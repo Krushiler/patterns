@@ -2,14 +2,14 @@ from working_with_settings.domain.exceptions.field_exceptions import InvalidType
 from working_with_settings.domain.model.base.base_model import BaseModel
 
 
-class Nomenclature(BaseModel):
-
-    def __init__(self):
+class NomenclatureGroup(BaseModel):
+    def __init__(self, name: str = ''):
         super().__init__()
         self._name = ''
+        self.name = name
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     @name.setter

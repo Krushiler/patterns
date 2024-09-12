@@ -2,7 +2,7 @@ import json
 import os
 
 from working_with_settings.data.mapping.settings_mapper import SettingsMapper
-from working_with_settings.domain.model.settings import Settings
+from working_with_settings.domain.model.organization.settings import Settings
 
 
 class SettingsRepository:

@@ -1,7 +1,7 @@
 from working_with_settings.application.base.base_manager import BaseManager
 from working_with_settings.application.settings.settings_state import SettingsState
 from working_with_settings.data.repository.settings_repository import SettingsRepository
-from working_with_settings.domain.model.settings import Settings
+from working_with_settings.domain.model.organization.settings import Settings
 
 
 class SettingsManager(BaseManager[SettingsState]):
@@ -12,10 +12,12 @@ class SettingsManager(BaseManager[SettingsState]):
 
     @staticmethod
     def _default_settings() -> Settings:
-        settings = Settings()
-        settings.organization_name = 'Рога и копыта'
-        settings.inn = '123456789016'
-        settings.director_name = 'Иванов Иван Иванович'
+        settings = Settings(
+            inn='123456789012',
+            ownership_form='Ownership',
+            bic='Ozwell E. Spencer',
+            account='Ozwell E. Spencer'
+        )
         return settings
 
     def open(self, file_name: str) -> bool:

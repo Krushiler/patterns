@@ -1,14 +1,14 @@
 from copy import deepcopy
 
-from working_with_settings.domain.model.settings import Settings
+from working_with_settings.domain.model.organization.settings import Settings
 
 
 class SettingsState:
 
     def __init__(self, settings: Settings = None, error: Exception = None, file_name: str = ''):
         self._settings = settings
-        self._error = None
-        self._file_name = ''
+        self._error = error
+        self._file_name = file_name
 
     @property
     def file_name(self):

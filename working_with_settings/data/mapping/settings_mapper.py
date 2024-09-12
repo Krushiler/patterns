@@ -1,4 +1,4 @@
-from working_with_settings.domain.model.settings import Settings
+from working_with_settings.domain.model.organization.settings import Settings
 
 
 class SettingsMapper:
@@ -6,8 +6,10 @@ class SettingsMapper:
     def from_json(json: dict) -> Settings:
         if not isinstance(json, dict):
             raise TypeError('Dict must be provided')
-        settings = Settings()
-        settings.organization_name = json['organization_name']
-        settings.inn = json['inn']
-        settings.director_name = json['director_name']
+        settings = Settings(
+            ownership_form=json['ownership_form'],
+            inn=json['inn'],
+            bic=json['bic'],
+            account=json['account']
+        )
         return settings

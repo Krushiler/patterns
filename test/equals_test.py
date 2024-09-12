@@ -1,7 +1,7 @@
 from copy import deepcopy
 
-from working_with_settings.domain.model.measurement_unit import MeasurementUnit
-from working_with_settings.domain.model.nomenclature import Nomenclature
+from working_with_settings.domain.model.measurement.measurement_unit import MeasurementUnit
+from working_with_settings.domain.model.organization.nomenclature import Nomenclature
 
 
 def test_nomenclature_equals():
