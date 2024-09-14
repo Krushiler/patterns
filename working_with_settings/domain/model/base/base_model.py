@@ -1,5 +1,7 @@
 import uuid
 
+from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException
+
 
 class BaseModel:
     def __init__(self):
@@ -12,7 +14,7 @@ class BaseModel:
     @id.setter
     def id(self, value: str):
         if not isinstance(value, str):
-            raise TypeError('id must be str')
+            raise InvalidTypeException(str, type(value))
         self._id = value
 
     def __eq__(self, other):
