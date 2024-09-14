@@ -7,19 +7,20 @@ class MeasurementUnit(BaseModel):
         super().__init__()
         self._name = ''
         self._convertion_ratio = 1
-        self._measurement_type = ''
         self.name = name
         self.convertion_ratio = convertion_ratio
 
     @property
-    def convertion_ration(self) -> float:
+    def convertion_ratio(self) -> float:
         return self._convertion_ratio
 
-    @convertion_ration.setter
-    def convertion_ration(self, value):
-        if not isinstance(value, float):
+    @convertion_ratio.setter
+    def convertion_ratio(self, value):
+        try:
+            value = float(value)
+            self._convertion_ratio = value
+        except:
             raise InvalidTypeException(float, type(value))
-        self._convertion_ratio = value
 
     @property
     def name(self) -> str:

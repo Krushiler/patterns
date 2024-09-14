@@ -37,7 +37,7 @@ class Settings(BaseModel):
     @bic.setter
     def bic(self, value: str):
         if not isinstance(value, str):
-            raise TypeError('bic must be str')
+            raise InvalidTypeException(str, type(value))
         self._bic = value
 
     @property
@@ -47,7 +47,7 @@ class Settings(BaseModel):
     @account.setter
     def account(self, value: str):
         if not isinstance(value, str):
-            raise TypeError('account must be str')
+            raise InvalidTypeException(str, type(value))
         self._account = value
 
     @property
@@ -57,5 +57,5 @@ class Settings(BaseModel):
     @ownership_form.setter
     def ownership_form(self, value: str):
         if not isinstance(value, str):
-            raise TypeError('ownership_form must be str')
+            raise InvalidTypeException(str, type(value))
         self._ownership_form = value

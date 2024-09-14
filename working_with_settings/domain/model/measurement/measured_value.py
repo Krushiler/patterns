@@ -1,22 +1,53 @@
 from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException
+from working_with_settings.domain.model.base.base_model import BaseModel
 from working_with_settings.domain.model.measurement.measurement_unit import MeasurementUnit
 
 
-class MeasuredValue:
+class MeasuredValue(BaseModel):
     def __init__(self, value: float, unit: MeasurementUnit):
+        super().__init__()
+        self._value = 0
+        self._unit = None
         self.value = value
         self.unit = unit
 
     @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        try:
+            value = float(value)
+            self._value = value
+        except:
+            raise InvalidTypeException(float, type(value))
+
+    @property
+    def unit(self):
+        return self._unit
+
+    @unit.setter
+    def unit(self, value):
+        if not isinstance(value, MeasurementUnit):
+            raise InvalidTypeException(MeasurementUnit, type(value))
+        self._unit = value
+
+    @property
     def converted_value(self):
-        return self.value * self.unit.convertion_ration
+        return self.value * self.unit.convertion_ratio
 
     def __add__(self, other):
         if not isinstance(other, MeasuredValue):
             raise InvalidTypeException(MeasuredValue, type(other))
-        return MeasuredValue((self.converted_value + other.converted_value) / self.unit.convertion_ration, self.unit)
+        return MeasuredValue((self.converted_value + other.converted_value) / self.unit.convertion_ratio, self.unit)
 
     def __sub__(self, other):
         if not isinstance(other, MeasuredValue):
             raise InvalidTypeException(MeasuredValue, type(other))
-        return MeasuredValue((self.converted_value - other.converted_value) / self.unit.convertion_ration, self.unit)
+        return MeasuredValue((self.converted_value - other.converted_value) / self.unit.convertion_ratio, self.unit)
+
+    def equals(self, other):
+        if not isinstance(other, MeasuredValue):
+            return False
+        return self.converted_value == other.converted_value
