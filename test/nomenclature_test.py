@@ -2,10 +2,9 @@ from copy import deepcopy
 
 import pytest
 
-from working_with_settings.domain.model.organization.nomenclature_group import NomenclatureGroup
 from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException, InvalidLengthException
-from working_with_settings.domain.model.measurement.measurement_unit import MeasurementUnit
 from working_with_settings.domain.model.organization.nomenclature import Nomenclature
+from working_with_settings.domain.model.organization.nomenclature_group import NomenclatureGroup
 
 
 def test_nomenclature_equals():

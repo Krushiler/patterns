@@ -1,4 +1,4 @@
-def singleton(func):
+def lazy(func):
     instance = None
 
     def wrapper(*args, **kwargs):
