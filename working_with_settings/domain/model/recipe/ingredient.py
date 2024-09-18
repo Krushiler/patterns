@@ -5,29 +5,31 @@ from working_with_settings.domain.model.organization.nomenclature import Nomencl
 
 
 class Ingredient(BaseModel):
-    def __init__(self, name: Nomenclature, amount: MeasuredValue):
+    def __init__(self, nomenclature: Nomenclature, measured_amount: MeasuredValue):
         super().__init__()
 
-        self._name = None
-        self._amount = None
-        self.name = name
-        self.amount = amount
+        self._nomenclature = None
+        self._measured_amount = None
+
+        self.nomenclature = nomenclature
+        self.measured_amount = measured_amount
 
     @property
-    def name(self) -> Nomenclature:
-        return self._name
+    def nomenclature(self) -> Nomenclature:
+        return self._nomenclature
 
-    @name.setter
-    def name(self, value: Nomenclature):
+    @nomenclature.setter
+    def nomenclature(self, value: Nomenclature):
         if not isinstance(value, Nomenclature):
             raise InvalidTypeException(Nomenclature, type(value))
-        self._name = value
+        self._nomenclature = value
 
     @property
-    def amount(self) -> MeasuredValue:
-        return self._amount
+    def measured_amount(self) -> MeasuredValue:
+        return self._measured_amount
 
-    @amount.setter
-    def amount(self, value: MeasuredValue):
+    @measured_amount.setter
+    def measured_amount(self, value: MeasuredValue):
         if not isinstance(value, MeasuredValue):
             raise InvalidTypeException(MeasuredValue, type(value))
+        self._measured_amount = value
