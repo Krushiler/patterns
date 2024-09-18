@@ -14,3 +14,8 @@ class InvalidTypeException(ArgumentException):
 class InvalidFormatException(ArgumentException):
     def __init__(self, waited: str, actual: str):
         super().__init__('Invalid format. Waited {}, actual {}'.format(waited, actual))
+
+
+class InvalidUnitException(ArgumentException):
+    def __init__(self, waited: str, actual: str):
+        super().__init__('Expected unit with same base, {} and {} are not compatible'.format(waited, actual))

@@ -85,3 +85,18 @@ def test_measurement_unit_equals():
     n2.name = 'Test2'
 
     assert n1 != n2
+
+
+def test_unit_same_base():
+    u1 = MeasurementUnit('a', 1)
+    u2 = MeasurementUnit('b', 1, u1)
+    u3 = MeasurementUnit('c', 1, u2)
+    u4 = MeasurementUnit('d', 1)
+
+    assert u1.has_same_base(u2)
+    assert u3.has_same_base(u1)
+    assert u1.has_same_base(u2)
+    assert u1.has_same_base(u2)
+
+    assert not u1.has_same_base(u4)
+    assert not u4.has_same_base(u1)

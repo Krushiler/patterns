@@ -1,13 +1,14 @@
 from copy import deepcopy
 
+from working_with_settings.application.base.base_state import BaseState
 from working_with_settings.domain.model.organization.settings import Settings
 
 
-class SettingsState:
+class SettingsState(BaseState):
 
-    def __init__(self, settings: Settings = None, error: Exception = None, file_name: str = ''):
+    def __init__(self, settings: Settings = None, file_name: str = ''):
+        super().__init__()
         self._settings = settings
-        self._error = error
         self._file_name = file_name
 
     @property
@@ -18,18 +19,12 @@ class SettingsState:
     def settings(self):
         return self._settings
 
-    @property
-    def error(self):
-        return self._error
+    def with_file_name(self, value: str):
+        state = deepcopy(self)
+        state._file_name = value
+        return state
 
-    def with_file_name(self, value):
-        self._file_name = value
-        return deepcopy(self)
-
-    def with_error(self, value):
-        self._error = value
-        return deepcopy(self)
-
-    def with_settings(self, value):
-        self._settings = value
-        return deepcopy(self)
+    def with_settings(self, value: Settings):
+        state = deepcopy(self)
+        state._settings = value
+        return state

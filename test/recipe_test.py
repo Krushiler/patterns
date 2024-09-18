@@ -1,16 +1,40 @@
-import datetime
+import pytest
 
 from working_with_settings.di.di import Di
+from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException, InvalidUnitException
+from working_with_settings.domain.model.measurement.measured_value import MeasuredValue
+from working_with_settings.domain.model.measurement.measurement_unit import MeasurementUnit
+from working_with_settings.domain.model.organization.nomenclature import Nomenclature
+from working_with_settings.domain.model.recipe.ingredient import Ingredient
+from working_with_settings.domain.model.recipe.recipe import Recipe
 
 
-def test_recipe(inject: Di):
-    repository = inject.get_recipe_repository()
+def test_start_recipes_added(inject: Di):
+    inject.get_start_manager()
+    recipe_repository = inject.get_recipe_repository()
 
-    assert len(repository.get_recipes()) == 1
+    assert len(recipe_repository.get_recipes()) == 2
 
-    print(repository.get_recipes())
 
-    assert repository.get_recipes()[0].cooking_time == datetime.timedelta(minutes=25)
+def test_recipe_validation(inject: Di):
+    with pytest.raises(InvalidTypeException):
+        Recipe(ingredients=[''])
 
-    assert len(repository.get_recipes()[0].ingredients) == 8
-    assert len(repository.get_recipes()[0].cooking_steps) == 9
+    with pytest.raises(InvalidTypeException):
+        Recipe(cooking_steps=[1])
+
+    with pytest.raises(InvalidTypeException):
+        Recipe(cooking_time=1)
+
+
+def test_ingredient_same_unit(inject: Di):
+    u1 = MeasurementUnit(name='a', convertion_ratio=1)
+    u2 = MeasurementUnit(name='b', convertion_ratio=1, base_unit=u1)
+    u3 = MeasurementUnit(name='c', convertion_ratio=1)
+
+    n = Nomenclature(name='m', unit=u1)
+
+    Ingredient(nomenclature=n, measured_amount=MeasuredValue(value=1, unit=u2))
+
+    with pytest.raises(InvalidUnitException):
+        Ingredient(nomenclature=n, measured_amount=MeasuredValue(value=1, unit=u3))

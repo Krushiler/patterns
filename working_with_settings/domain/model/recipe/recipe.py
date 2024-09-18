@@ -31,11 +31,13 @@ class Recipe(BaseModel):
         self._name = value
 
     @property
-    def cooking_time(self) -> datetime.timedelta:
+    def cooking_time(self) -> datetime.timedelta | None:
         return self._cooking_time
 
     @cooking_time.setter
     def cooking_time(self, value: datetime.timedelta):
+        if value is None:
+            return
         if not isinstance(value, datetime.timedelta):
             raise InvalidTypeException(datetime.timedelta, type(value))
         self._cooking_time = value

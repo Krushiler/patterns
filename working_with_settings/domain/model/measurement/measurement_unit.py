@@ -41,6 +41,8 @@ class MeasurementUnit(BaseModel):
 
     @base_unit.setter
     def base_unit(self, value: 'MeasurementUnit'):
+        if value is None:
+            return
         if not isinstance(value, MeasurementUnit):
             raise InvalidTypeException(MeasurementUnit, type(value))
         self._base_unit = value
@@ -49,3 +51,21 @@ class MeasurementUnit(BaseModel):
         if not isinstance(other, MeasurementUnit):
             return False
         return self.name == other.name
+
+    def has_same_base(self, other):
+        if not isinstance(other, MeasurementUnit):
+            return False
+
+        if self == other:
+            return True
+
+        other_base = other
+        self_base = self
+
+        while other_base.base_unit is not None:
+            other_base = other_base.base_unit
+
+        while self_base.base_unit is not None:
+            self_base = self_base.base_unit
+
+        return other_base == self_base

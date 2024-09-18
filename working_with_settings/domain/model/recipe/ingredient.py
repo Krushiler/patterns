@@ -1,4 +1,4 @@
-from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException
+from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException, InvalidUnitException
 from working_with_settings.domain.model.base.base_model import BaseModel
 from working_with_settings.domain.model.measurement.measured_value import MeasuredValue
 from working_with_settings.domain.model.organization.nomenclature import Nomenclature
@@ -32,4 +32,6 @@ class Ingredient(BaseModel):
     def measured_amount(self, value: MeasuredValue):
         if not isinstance(value, MeasuredValue):
             raise InvalidTypeException(MeasuredValue, type(value))
+        if not value.unit.has_same_base(self.nomenclature.unit):
+            raise InvalidUnitException(self.nomenclature.unit, value.unit)
         self._measured_amount = value

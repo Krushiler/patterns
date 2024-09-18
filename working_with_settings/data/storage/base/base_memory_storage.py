@@ -10,6 +10,9 @@ class BaseMemoryStorage(Generic[K, V], ABC):
     def __init__(self):
         self._data = {}
 
+    def contains_key(self, key: K) -> bool:
+        return key in self._data
+
     def get(self, key: K) -> V | None:
         return self._data[key]
 
