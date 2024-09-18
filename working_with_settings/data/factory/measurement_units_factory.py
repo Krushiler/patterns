@@ -8,13 +8,21 @@ class MeasurementUnitsFactory:
         return MeasurementUnit('гр', 1)
 
     @lazy
+    def kilograms(self) -> MeasurementUnit:
+        return MeasurementUnit('кг', 1000, self.grams())
+
+    @lazy
     def things(self) -> MeasurementUnit:
         return MeasurementUnit('шт', 1)
 
     @lazy
     def tens(self) -> MeasurementUnit:
-        return MeasurementUnit('десяток', 10)
+        return MeasurementUnit('десяток', 10, self.things())
 
     @lazy
     def milliliters(self) -> MeasurementUnit:
         return MeasurementUnit('мл', 1)
+
+    @lazy
+    def liter(self) -> MeasurementUnit:
+        return MeasurementUnit('л', 1000, self.milliliters())
