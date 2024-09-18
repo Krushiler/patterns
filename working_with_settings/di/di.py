@@ -1,6 +1,6 @@
 from working_with_settings.application.settings.settings_manager import SettingsManager
 from working_with_settings.data.factory.measurement_units_factory import MeasurementUnitsFactory
-from working_with_settings.data.factory.nomenclature_factory import NomenclatureFactory
+from working_with_settings.data.factory.start_nomenclature_factory import StartNomenclatureFactory
 from working_with_settings.data.factory.recipe.milk_pancakes.milk_pancakes_recipe_factory import \
     MilkPancakesRecipeFactory
 from working_with_settings.data.repository.recipe_repository import RecipeRepository
@@ -27,8 +27,8 @@ class Di:
         return RecipeStorage()
 
     @lazy
-    def get_nomenclature_factory(self) -> NomenclatureFactory:
-        return NomenclatureFactory()
+    def get_start_nomenclature_factory(self) -> StartNomenclatureFactory:
+        return StartNomenclatureFactory(self.get_measurement_units_factory())
 
     @lazy
     def get_measurement_units_factory(self) -> MeasurementUnitsFactory:
@@ -36,4 +36,4 @@ class Di:
 
     @lazy
     def get_milk_pancakes_recipe_factory(self) -> MilkPancakesRecipeFactory:
-        return MilkPancakesRecipeFactory(self.get_nomenclature_factory(), self.get_measurement_units_factory())
+        return MilkPancakesRecipeFactory(self.get_start_nomenclature_factory(), self.get_measurement_units_factory())

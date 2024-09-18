@@ -2,7 +2,7 @@ import datetime
 
 from working_with_settings.data.factory.base.base_recipe_factory import BaseRecipeFactory
 from working_with_settings.data.factory.measurement_units_factory import MeasurementUnitsFactory
-from working_with_settings.data.factory.nomenclature_factory import NomenclatureFactory
+from working_with_settings.data.factory.start_nomenclature_factory import StartNomenclatureFactory
 from working_with_settings.di.di_utils import lazy
 from working_with_settings.domain.model.measurement.measured_value import MeasuredValue
 from working_with_settings.domain.model.recipe.ingredient import Ingredient
@@ -10,7 +10,7 @@ from working_with_settings.domain.model.recipe.recipe import Recipe
 
 
 class MilkPancakesRecipeFactory(BaseRecipeFactory):
-    def __init__(self, nomenclature_factory: NomenclatureFactory, unit_factory: MeasurementUnitsFactory):
+    def __init__(self, nomenclature_factory: StartNomenclatureFactory, unit_factory: MeasurementUnitsFactory):
         self._nomenclature_factory = nomenclature_factory
         self._unit_factory = unit_factory
 
