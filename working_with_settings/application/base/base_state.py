@@ -2,8 +2,8 @@ from copy import deepcopy
 
 
 class BaseState:
-    def __init__(self):
-        self._error = None
+    def __init__(self, error=None):
+        self._error = error
 
     @property
     def error(self):

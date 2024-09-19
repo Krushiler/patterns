@@ -6,8 +6,8 @@ from working_with_settings.domain.model.organization.settings import Settings
 
 class SettingsState(BaseState):
 
-    def __init__(self, settings: Settings = None, file_name: str = ''):
-        super().__init__()
+    def __init__(self, settings: Settings = None, file_name: str = '', error=None):
+        super().__init__(error=error)
         self._settings = settings
         self._file_name = file_name
 

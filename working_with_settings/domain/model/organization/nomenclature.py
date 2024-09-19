@@ -30,6 +30,8 @@ class Nomenclature(BaseModel):
 
     @unit.setter
     def unit(self, value: MeasurementUnit):
+        if value is None:
+            return
         if not isinstance(value, MeasurementUnit):
             raise InvalidTypeException(MeasurementUnit, type(value))
         self._unit = value
