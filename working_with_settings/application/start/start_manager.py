@@ -8,4 +8,6 @@ class StartManager(BaseManager[BaseState]):
         super().__init__(BaseState())
 
         self._recipe_repository = recipe_repository
-        recipe_repository.generate_start_recipes()
+
+    def init(self):
+        self._recipe_repository.init_start_recipes()

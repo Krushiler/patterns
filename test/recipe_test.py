@@ -9,9 +9,24 @@ from working_with_settings.domain.model.recipe.ingredient import Ingredient
 from working_with_settings.domain.model.recipe.recipe import Recipe
 
 
-def test_start_recipes_added(inject: Di):
-    inject.get_start_manager()
+def test_start_recipes_not_added_with_existing_recipes(inject: Di):
+    start_storage = inject.get_start_recipes_storage()
+    storage = inject.get_recipe_storage()
+
+    storage.create(start_storage.get_recipes()[0])
+
+    inject.get_start_manager().init()
     recipe_repository = inject.get_recipe_repository()
+
+    assert len(recipe_repository.get_recipes()) == 1
+
+
+def test_start_recipes_added_with_existing_recipes(inject: Di):
+
+    inject.get_start_manager().init()
+    recipe_repository = inject.get_recipe_repository()
+
+    print(recipe_repository.get_recipes())
 
     assert len(recipe_repository.get_recipes()) == 2
 

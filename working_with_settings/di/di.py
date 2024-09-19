@@ -2,42 +2,68 @@ from working_with_settings.application.settings.settings_manager import Settings
 from working_with_settings.application.start.start_manager import StartManager
 from working_with_settings.data.factory.measurement_units_factory import MeasurementUnitsFactory
 from working_with_settings.data.factory.start_nomenclature_factory import StartNomenclatureFactory
-from working_with_settings.data.factory.start_recipes_factory import StartRecipesFactory
+from working_with_settings.data.factory.start_recipes_factory import StartRecipesStorage
 from working_with_settings.data.repository.recipe_repository import RecipeRepository
 from working_with_settings.data.repository.settings_repository import SettingsRepository
 from working_with_settings.data.storage.recipe_storage import RecipeStorage
-from working_with_settings.di.di_utils import lazy
 
 
 class Di:
-    @lazy
+    def __init__(self):
+        self._measurement_units_factory = None
+        self._start_recipes_storage = None
+        self._start_nomenclature_factory = None
+        self._settings_manager = None
+        self._settings_repository = None
+        self._recipe_repository = None
+        self._recipe_storage = None
+        self._start_manager = None
+
     def get_settings_manager(self) -> SettingsManager:
-        return SettingsManager(self.get_settings_repository())
+        if self._settings_manager is None:
+            self._settings_manager = SettingsManager(self.get_settings_repository())
 
-    @lazy
+        return self._settings_manager
+
     def get_start_manager(self) -> StartManager:
-        return StartManager(self.get_recipe_repository())
+        if self._start_manager is None:
+            self._start_manager = StartManager(self.get_recipe_repository())
 
-    @lazy
+        return self._start_manager
+
     def get_settings_repository(self) -> SettingsRepository:
-        return SettingsRepository()
+        if self._settings_repository is None:
+            self._settings_repository = SettingsRepository()
+        return self._settings_repository
 
-    @lazy
     def get_recipe_repository(self) -> RecipeRepository:
-        return RecipeRepository(self.get_recipe_storage(), self.get_start_recipes_factory().get_recipes())
+        if self._recipe_repository is None:
+            self._recipe_repository = RecipeRepository(self.get_recipe_storage(),
+                                                       self.get_start_recipes_storage().get_recipes())
 
-    @lazy
+        return self._recipe_repository
+
     def get_recipe_storage(self) -> RecipeStorage:
-        return RecipeStorage()
+        if self._recipe_storage is None:
+            self._recipe_storage = RecipeStorage()
 
-    @lazy
+        return self._recipe_storage
+
     def get_start_nomenclature_factory(self) -> StartNomenclatureFactory:
-        return StartNomenclatureFactory(self.get_measurement_units_factory())
+        if self._start_nomenclature_factory is None:
+            self._start_nomenclature_factory = StartNomenclatureFactory(self.get_measurement_units_factory())
 
-    @lazy
+        return self._start_nomenclature_factory
+
     def get_measurement_units_factory(self) -> MeasurementUnitsFactory:
-        return MeasurementUnitsFactory()
+        if self._measurement_units_factory is None:
+            self._measurement_units_factory = MeasurementUnitsFactory()
 
-    @lazy
-    def get_start_recipes_factory(self) -> StartRecipesFactory:
-        return StartRecipesFactory(self.get_start_nomenclature_factory(), self.get_measurement_units_factory())
+        return self._measurement_units_factory
+
+    def get_start_recipes_storage(self) -> StartRecipesStorage:
+        if self._start_recipes_storage is None:
+            self._start_recipes_storage = StartRecipesStorage(self.get_start_nomenclature_factory(),
+                                                              self.get_measurement_units_factory())
+
+        return self._start_recipes_storage

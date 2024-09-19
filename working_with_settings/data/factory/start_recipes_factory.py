@@ -8,7 +8,7 @@ from working_with_settings.domain.model.recipe.ingredient import Ingredient
 from working_with_settings.domain.model.recipe.recipe import Recipe
 
 
-class StartRecipesFactory:
+class StartRecipesStorage:
     def __init__(self, nomenclature_factory: StartNomenclatureFactory, unit_factory: MeasurementUnitsFactory):
         self._nomenclature_factory = nomenclature_factory
         self._unit_factory = unit_factory

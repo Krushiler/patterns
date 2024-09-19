@@ -1,11 +1,9 @@
 from abc import ABC
-from typing import TypeVar, Generic
 
-K = TypeVar('K')
-V = TypeVar('V')
+from working_with_settings.data.storage.base.base_storage import BaseStorage, K, V
 
 
-class BaseMemoryStorage(Generic[K, V], ABC):
+class BaseMemoryStorage(BaseStorage[K, V], ABC):
 
     def __init__(self):
         self._data = {}
@@ -16,14 +14,22 @@ class BaseMemoryStorage(Generic[K, V], ABC):
     def get(self, key: K) -> V | None:
         return self._data[key]
 
-    def get_all(self) -> list[V]:
-        return list(self._data.values())
+    def get_all(self, offset: int = 0, limit: int | None = None) -> list[V]:
+        values = list(self._data.values())
+        if limit is not None:
+            values = values[offset:offset + limit]
+        else:
+            values = values[offset:]
+        return values
 
-    def set(self, key: K, value: V):
+    def create(self, value: V):
+        self._data[value.id] = value
+
+    def update(self, key: K, value: V):
         self._data[key] = value
 
-    def remove(self, key: K):
+    def delete(self, key: K):
         del self._data[key]
 
-    def clear(self):
-        self._data.clear()
+    def is_empty(self) -> bool:
+        return len(self._data) == 0
