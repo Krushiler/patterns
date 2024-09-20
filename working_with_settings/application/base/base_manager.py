@@ -21,3 +21,6 @@ class BaseManager(Generic[T]):
     @state.setter
     def state(self, value: T):
         self._stream.on_next(value)
+
+    def emit_error(self, error: Exception):
+        self._stream.on_next(self.state.with_error(error))

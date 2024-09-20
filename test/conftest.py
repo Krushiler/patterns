@@ -3,6 +3,10 @@ import pytest
 from working_with_settings.di.di import Di
 
 
-@pytest.fixture(autouse=True, scope="function")
+@pytest.fixture
 def inject() -> Di:
-    return Di()
+    try:
+        yield Di()
+    finally:
+        pass
+
