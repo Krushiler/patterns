@@ -1,6 +1,7 @@
 from working_with_settings.application.settings.settings_manager import SettingsManager
 from working_with_settings.application.start.start_manager import StartManager
 from working_with_settings.data.factory.measurement_units_factory import MeasurementUnitsFactory
+from working_with_settings.data.factory.report_factory import ReportFactory
 from working_with_settings.data.factory.start_nomenclature_factory import StartNomenclatureFactory
 from working_with_settings.data.factory.start_recipes_factory import StartRecipesStorage
 from working_with_settings.data.repository.recipe_repository import RecipeRepository
@@ -18,6 +19,7 @@ class Di:
         self._recipe_repository = None
         self._recipe_storage = None
         self._start_manager = None
+        self._report_factory = None
 
     def get_settings_manager(self) -> SettingsManager:
         if self._settings_manager is None:
@@ -48,6 +50,12 @@ class Di:
             self._recipe_storage = RecipeStorage()
 
         return self._recipe_storage
+
+    def get_report_factory(self) -> ReportFactory:
+        if self._report_factory is None:
+            self._report_factory = ReportFactory()
+
+        return self._report_factory
 
     def get_start_nomenclature_factory(self) -> StartNomenclatureFactory:
         if self._start_nomenclature_factory is None:

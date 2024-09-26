@@ -1,0 +1,50 @@
+from abc import ABC, abstractmethod
+
+from working_with_settings.domain.model.base.base_model import BaseModel
+from working_with_settings.domain.model.report.report_format import ReportFormat
+
+
+class BaseReport(ABC):
+    def create(self, obj: list[BaseModel]) -> str:
+        serialized_data = [self._get_properties(item) for item in obj]
+        return self.create_from_serialized(serialized_data, obj)
+
+    @abstractmethod
+    def create_from_serialized(self, obj: list[dict], original_obj: list[BaseModel]) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def format(self) -> ReportFormat:
+        pass
+
+    def _get_properties(self, obj) -> dict:
+        def get_properties(obj):
+            return dict(
+                (x, getattr(obj, x)) for x in obj.__class__.__dict__ if isinstance(obj.__class__.__dict__[x], property))
+
+        props = get_properties(obj)
+
+        if isinstance(obj, BaseModel):
+            props['id'] = obj.id
+
+        for prop in props:
+            if isinstance(props[prop], list):
+                new_list = []
+                for item in props[prop]:
+                    new_list.append(self._get_properties(item))
+                props[prop] = new_list
+            elif hasattr(props[prop], '__dict__'):
+                props[prop] = self._get_properties(props[prop])
+
+        return props
+
+    def _flatten_dict(self, d: dict, parent_key: str = '', sep: str = '.') -> dict:
+        items = []
+        for k, v in d.items():
+            new_key = parent_key + sep + k if parent_key else k
+            if isinstance(v, dict):
+                items.extend(self._flatten_dict(v, new_key, sep=sep).items())
+            else:
+                items.append((new_key, v))
+        return dict(items)
