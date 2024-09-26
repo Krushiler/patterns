@@ -16,7 +16,7 @@ class XmlReport(BaseReport):
             object_element = SubElement(root, f"{class_name}_{i}")
             self._dict_to_xml(item, object_element)
 
-        return tostring(root, encoding='unicode')
+        return tostring(root, encoding='unicode', xml_declaration=True)
 
     def _dict_to_xml(self, d: dict, parent: Element):
         for key, value in d.items():
