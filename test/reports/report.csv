@@ -1,0 +1,6 @@
+nomenclature_group_id,unit.convertion_ratio,unit.name,unit.base_unit.convertion_ratio,unit.base_unit.name,unit.base_unit.base_unit,unit.base_unit.id,unit.id,name,id
+,1000.0,кг,1.0,гр,,f9696713-5a69-4b23-ba5f-52561ef6fbaa,70101cb8-0c73-45c1-9213-7095735dc1f3,Пшеничная мука,b7ce4394-1021-4d78-9a32-8bf2850765ee
+,1000.0,л,1.0,мл,,c665517d-3488-4aeb-8f3f-fa85bc2dab7c,c4b624b7-cd71-47a9-9394-dce8dad87d15,Молоко,f2bfe938-ec80-4d9b-9bd7-5d477b4f4f19
+,10.0,десяток,1.0,шт,,dc8dc2f3-8b33-4168-936a-e66777851ecb,4d8d0cb1-9cce-4f1c-a257-52978f172049,Яйцо,848ffb17-c275-4968-a01f-d2e009ae92b7
+,1000.0,кг,1.0,гр,,f9696713-5a69-4b23-ba5f-52561ef6fbaa,70101cb8-0c73-45c1-9213-7095735dc1f3,Сахар,e0fc6edb-961d-4fa1-b0c0-4e82ed58929e
+,1000.0,кг,1.0,гр,,f9696713-5a69-4b23-ba5f-52561ef6fbaa,70101cb8-0c73-45c1-9213-7095735dc1f3,Разрыхлитель,30d07510-1275-45f7-94c7-c9e646dd6c87

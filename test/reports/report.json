@@ -1,0 +1,82 @@
+[
+    {
+        "id": "b7ce4394-1021-4d78-9a32-8bf2850765ee",
+        "name": "Пшеничная мука",
+        "nomenclature_group_id": "",
+        "unit": {
+            "base_unit": {
+                "base_unit": null,
+                "convertion_ratio": 1.0,
+                "id": "f9696713-5a69-4b23-ba5f-52561ef6fbaa",
+                "name": "гр"
+            },
+            "convertion_ratio": 1000.0,
+            "id": "70101cb8-0c73-45c1-9213-7095735dc1f3",
+            "name": "кг"
+        }
+    },
+    {
+        "id": "f2bfe938-ec80-4d9b-9bd7-5d477b4f4f19",
+        "name": "Молоко",
+        "nomenclature_group_id": "",
+        "unit": {
+            "base_unit": {
+                "base_unit": null,
+                "convertion_ratio": 1.0,
+                "id": "c665517d-3488-4aeb-8f3f-fa85bc2dab7c",
+                "name": "мл"
+            },
+            "convertion_ratio": 1000.0,
+            "id": "c4b624b7-cd71-47a9-9394-dce8dad87d15",
+            "name": "л"
+        }
+    },
+    {
+        "id": "848ffb17-c275-4968-a01f-d2e009ae92b7",
+        "name": "Яйцо",
+        "nomenclature_group_id": "",
+        "unit": {
+            "base_unit": {
+                "base_unit": null,
+                "convertion_ratio": 1.0,
+                "id": "dc8dc2f3-8b33-4168-936a-e66777851ecb",
+                "name": "шт"
+            },
+            "convertion_ratio": 10.0,
+            "id": "4d8d0cb1-9cce-4f1c-a257-52978f172049",
+            "name": "десяток"
+        }
+    },
+    {
+        "id": "e0fc6edb-961d-4fa1-b0c0-4e82ed58929e",
+        "name": "Сахар",
+        "nomenclature_group_id": "",
+        "unit": {
+            "base_unit": {
+                "base_unit": null,
+                "convertion_ratio": 1.0,
+                "id": "f9696713-5a69-4b23-ba5f-52561ef6fbaa",
+                "name": "гр"
+            },
+            "convertion_ratio": 1000.0,
+            "id": "70101cb8-0c73-45c1-9213-7095735dc1f3",
+            "name": "кг"
+        }
+    },
+    {
+        "id": "30d07510-1275-45f7-94c7-c9e646dd6c87",
+        "name": "Разрыхлитель",
+        "nomenclature_group_id": "",
+        "unit": {
+            "base_unit": {
+                "base_unit": null,
+                "convertion_ratio": 1.0,
+                "id": "f9696713-5a69-4b23-ba5f-52561ef6fbaa",
+                "name": "гр"
+            },
+            "convertion_ratio": 1000.0,
+            "id": "70101cb8-0c73-45c1-9213-7095735dc1f3",
+            "name": "кг"
+        }
+    }
+]
