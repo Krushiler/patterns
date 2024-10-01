@@ -1,13 +1,19 @@
+import typing
+import builtins
+
 from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException
 from working_with_settings.domain.model.base.base_model import BaseModel
 
+_unit_class = typing.ForwardRef('MeasurementUnit')
+
 
 class MeasurementUnit(BaseModel):
-    def __init__(self, name: str = '', convertion_ratio: float = 1.0, base_unit: 'MeasurementUnit' = None):
+    _name: str = ''
+    _convertion_ratio: str = 1
+    _base_unit: _unit_class = None
+
+    def __init__(self, name: str = None, convertion_ratio: float = None, base_unit: _unit_class = None):
         super().__init__()
-        self._name = ''
-        self._convertion_ratio = 1
-        self._base_unit = None
 
         self.name = name
         self.convertion_ratio = convertion_ratio
@@ -36,11 +42,11 @@ class MeasurementUnit(BaseModel):
         self._name = value
 
     @property
-    def base_unit(self) -> 'MeasurementUnit':
+    def base_unit(self) -> _unit_class:
         return self._base_unit
 
     @base_unit.setter
-    def base_unit(self, value: 'MeasurementUnit'):
+    def base_unit(self, value: _unit_class):
         if value is None:
             return
         if not isinstance(value, MeasurementUnit):
@@ -69,3 +75,6 @@ class MeasurementUnit(BaseModel):
             self_base = self_base.base_unit
 
         return other_base == self_base
+
+
+builtins.MeasurementUnit = MeasurementUnit

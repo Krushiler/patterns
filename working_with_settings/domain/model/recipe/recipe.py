@@ -6,14 +6,14 @@ from working_with_settings.domain.model.recipe.ingredient import Ingredient
 
 
 class Recipe(BaseModel):
-    def __init__(self, name: str = '', cooking_time: datetime.timedelta = None, ingredients: list[Ingredient] = None,
+    _name: str = ''
+    _cooking_time: datetime.timedelta = None
+    _ingredients: list[Ingredient] = None
+    _cooking_steps: list[str] = None
+
+    def __init__(self, name: str = None, cooking_time: datetime.timedelta = None, ingredients: list[Ingredient] = None,
                  cooking_steps: list[str] = None):
         super().__init__()
-
-        self._name = ''
-        self._cooking_time = None
-        self._ingredients = None
-        self._cooking_steps = None
 
         self.name = name
         self.cooking_time = cooking_time

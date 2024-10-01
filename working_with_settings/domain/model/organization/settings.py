@@ -11,28 +11,28 @@ from working_with_settings.data.report.xml_report import XmlReport
 
 
 class Settings(BaseModel):
-    def __init__(self, inn: str = '', bic: str = '', account: str = '', ownership_form: str = '',
+    _inn: str = None
+    _bic: str = None
+    _account: str = None
+    _ownership_form: str = None
+    _default_report_format: ReportFormat = None
+    _report_map: dict[ReportFormat, type] = {
+        ReportFormat.CSV: CsvReport,
+        ReportFormat.MARKDOWN: MarkdownReport,
+        ReportFormat.JSON: JsonReport,
+        ReportFormat.XML: XmlReport,
+        ReportFormat.RTF: RtfReport
+    }
+
+    def __init__(self, inn: str = None, bic: str = None, account: str = None, ownership_form: str = None,
                  default_report_format: ReportFormat = ReportFormat.JSON):
         super().__init__()
-        self._inn = ''
-        self._bic = ''
-        self._account = ''
-        self._ownership_form = ''
-        self._default_report_format = None
 
         self.inn = inn
         self.bic = bic
         self.account = account
         self.ownership_form = ownership_form
         self.default_report_format = default_report_format
-
-        self._report_map = {
-            ReportFormat.CSV: CsvReport,
-            ReportFormat.MARKDOWN: MarkdownReport,
-            ReportFormat.JSON: JsonReport,
-            ReportFormat.XML: XmlReport,
-            ReportFormat.RTF: RtfReport
-        }
 
     @property
     def inn(self) -> str:

@@ -1,28 +1,32 @@
 from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException, InvalidLengthException
 from working_with_settings.domain.model.base.base_model import BaseModel
 from working_with_settings.domain.model.measurement.measurement_unit import MeasurementUnit
+from working_with_settings.domain.model.organization.nomenclature_group import NomenclatureGroup
 
 
 class Nomenclature(BaseModel):
-    def __init__(self, name: str = '', unit: MeasurementUnit = None, nomenclature_group_id: str = ''):
+    _name: str = None
+    _unit: MeasurementUnit = None
+    _nomenclature_group: NomenclatureGroup = None
+
+    def __init__(self, name: str = None, unit: MeasurementUnit = None, nomenclature_group: NomenclatureGroup = None):
         super().__init__()
-        self._name = ''
-        self._unit = None
-        self._nomenclature_group_id = ''
 
         self.name = name
         self.unit = unit
-        self.nomenclature_group_id = nomenclature_group_id
+        self.nomenclature_group = nomenclature_group
 
     @property
-    def nomenclature_group_id(self) -> str:
-        return self._nomenclature_group_id
+    def nomenclature_group(self) -> str:
+        return self._nomenclature_group
 
-    @nomenclature_group_id.setter
-    def nomenclature_group_id(self, value: str):
-        if not isinstance(value, str):
+    @nomenclature_group.setter
+    def nomenclature_group(self, value: str):
+        if value is None:
+            return
+        if not isinstance(value, NomenclatureGroup):
             raise InvalidTypeException(str, type(value))
-        self._nomenclature_group_id = value
+        self._nomenclature_group = value
 
     @property
     def unit(self) -> MeasurementUnit:

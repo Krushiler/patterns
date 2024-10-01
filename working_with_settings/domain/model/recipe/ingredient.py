@@ -5,11 +5,11 @@ from working_with_settings.domain.model.organization.nomenclature import Nomencl
 
 
 class Ingredient(BaseModel):
-    def __init__(self, nomenclature: Nomenclature, measured_amount: MeasuredValue):
-        super().__init__()
+    _nomenclature: Nomenclature = None
+    _measured_amount: MeasuredValue = None
 
-        self._nomenclature = None
-        self._measured_amount = None
+    def __init__(self, nomenclature: Nomenclature = None, measured_amount: MeasuredValue = None):
+        super().__init__()
 
         self.nomenclature = nomenclature
         self.measured_amount = measured_amount

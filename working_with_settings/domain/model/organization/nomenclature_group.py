@@ -3,9 +3,10 @@ from working_with_settings.domain.model.base.base_model import BaseModel
 
 
 class NomenclatureGroup(BaseModel):
-    def __init__(self, name: str = ''):
+    _name: str = None
+
+    def __init__(self, name: str = None):
         super().__init__()
-        self._name = ''
         self.name = name
 
     @property
