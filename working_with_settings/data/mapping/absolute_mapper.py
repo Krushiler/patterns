@@ -1,7 +1,34 @@
 from working_with_settings.domain.model.base.base_model import BaseModel
+from typing import get_type_hints
 
 
 class AbsoluteMapper:
+    _primitives = (bool, str, int, float, type(None))
+
+    @staticmethod
+    def from_dict(dictionary: dict | object, cls: type):
+        if dictionary is None:
+            return None
+        if cls in AbsoluteMapper._primitives:
+            return dictionary
+
+        obj = cls.__new__(cls, cls)
+
+        class_fields = get_type_hints(obj)
+
+        if isinstance(obj, BaseModel):
+            class_fields['_id'] = str
+
+        for field in dictionary.keys():
+            type_hint_name = f'_{field}'
+
+            if type_hint_name not in class_fields.keys():
+                continue
+
+            setattr(obj, field, AbsoluteMapper.from_dict(dictionary[field], class_fields[type_hint_name]))
+
+        return obj
+
     @staticmethod
     def to_dict(obj) -> dict:
         def get_properties(obj):
