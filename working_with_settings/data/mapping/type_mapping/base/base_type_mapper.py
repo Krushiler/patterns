@@ -6,9 +6,6 @@ MODEL = TypeVar('MODEL')
 
 class BaseTypeMapper(ABC, Generic[MODEL]):
 
-    def can_map(self, cls) -> bool:
-        print(BaseTypeMapper.__bases__)
-
     @abstractmethod
     def from_model(self, obj):
         pass
