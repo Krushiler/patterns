@@ -28,10 +28,7 @@ class AbsoluteMapper:
 
         obj = cls.__new__(cls, cls)
 
-        class_fields = get_type_hints(obj)
-
-        if isinstance(obj, BaseModel):
-            class_fields['_id'] = str
+        class_fields = get_type_hints(cls)
 
         for field in dictionary.keys():
             type_hint_name = f'_{field}'
