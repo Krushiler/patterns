@@ -44,3 +44,11 @@ def test_list_measured_value_serialization(inject: Di):
 
     assert deserialized[1].unit == values[1].unit
     assert deserialized[1].value == values[1].value
+
+
+def test_recipe_serialization(inject: Di):
+    values = inject.get_start_recipes_storage().get_recipes()
+
+    deserialized = process_serialization(values, inject)
+
+    assert values[0].cooking_steps == deserialized[0].cooking_steps
