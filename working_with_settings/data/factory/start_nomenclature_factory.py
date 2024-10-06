@@ -9,6 +9,21 @@ class StartNomenclatureFactory:
     def __init__(self, unitsFactory: MeasurementUnitsFactory):
         self._unitsFactory = unitsFactory
 
+    def get_nomenclatures(self) -> list[Nomenclature]:
+        return [
+            self.wheat_flour(),
+            self.milk(),
+            self.egg(),
+            self.sugar(),
+            self.baking_powder(),
+            self.butter()
+        ]
+
+    def get_nomenclature_groups(self) -> list[NomenclatureGroup]:
+        return [
+            self.nomenclature_group()
+        ]
+
     @lazy
     def nomenclature_group(self) -> NomenclatureGroup:
         return NomenclatureGroup('Еда')
