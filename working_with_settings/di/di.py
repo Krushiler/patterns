@@ -6,6 +6,7 @@ from working_with_settings.data.factory.start_nomenclature_factory import StartN
 from working_with_settings.data.factory.start_recipes_factory import StartRecipesStorage
 from working_with_settings.data.repository.recipe_repository import RecipeRepository
 from working_with_settings.data.repository.settings_repository import SettingsRepository
+from working_with_settings.data.serialization.json_serializer import JsonSerializer
 from working_with_settings.data.storage.recipe_storage import RecipeStorage
 
 
@@ -75,3 +76,6 @@ class Di:
                                                               self.get_measurement_units_factory())
 
         return self._start_recipes_storage
+
+    def get_json_serializer(self) -> JsonSerializer:
+        return JsonSerializer()

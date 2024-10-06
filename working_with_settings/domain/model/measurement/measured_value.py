@@ -4,10 +4,11 @@ from working_with_settings.domain.model.measurement.measurement_unit import Meas
 
 
 class MeasuredValue(BaseModel):
-    def __init__(self, value: float, unit: MeasurementUnit):
+    _value: float = 0
+    _unit: MeasurementUnit = None
+
+    def __init__(self, value: float = None, unit: MeasurementUnit = None):
         super().__init__()
-        self._value = 0
-        self._unit = None
         self.value = value
         self.unit = unit
 
