@@ -3,6 +3,17 @@ from working_with_settings.domain.model.measurement.measurement_unit import Meas
 
 
 class MeasurementUnitsFactory:
+
+    def get_units(self) -> list[MeasurementUnit]:
+        return [
+            self.grams(),
+            self.kilograms(),
+            self.things(),
+            self.tens(),
+            self.milliliters(),
+            self.liter()
+        ]
+
     @lazy
     def grams(self) -> MeasurementUnit:
         return MeasurementUnit('гр', 1)
