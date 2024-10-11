@@ -1,3 +1,5 @@
+from enum import Enum
+
 from working_with_settings.data.mapping.type_mapping.timedelta_mapper import TimedeltaMapper
 from working_with_settings.domain.model.base.base_model import BaseModel
 from typing import get_type_hints, get_args, get_origin
@@ -34,6 +36,16 @@ class AbsoluteMapper:
             type_hint_name = f'_{field}'
 
             if type_hint_name not in class_fields.keys():
+                continue
+
+            field_class = class_fields[type_hint_name]
+
+            if issubclass(field_class, Enum):
+                for value in field_class.__members__.values():
+                    if value.value == dictionary[field] or value.name == dictionary[field]:
+                        setattr(obj, field, value)
+                        break
+
                 continue
 
             setattr(obj, field, AbsoluteMapper.from_dict(dictionary[field], class_fields[type_hint_name]))

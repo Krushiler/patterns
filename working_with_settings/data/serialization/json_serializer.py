@@ -6,7 +6,10 @@ from working_with_settings.data.serialization.base.base_serializer import BaseSe
 
 
 class JsonSerializer(BaseSerializer[str]):
-    def deserialize(self, data: str, cls: type):
+    def deserialize(self, data: str | list, cls: type):
+        if isinstance(data, list):
+            return [AbsoluteMapper.from_dict(item, cls) for item in data]
+
         json_data = json.loads(data.encode('utf-8'))
 
         if isinstance(json_data, list):
@@ -18,4 +21,4 @@ class JsonSerializer(BaseSerializer[str]):
             data = [AbsoluteMapper.to_dict(item) for item in obj]
         else:
             data = AbsoluteMapper.to_dict(obj)
-        return json.dumps(data, default=str, ensure_ascii=False)
+        return json.dumps(data, default=str, ensure_ascii=False, indent=4)
