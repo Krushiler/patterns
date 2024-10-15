@@ -18,4 +18,4 @@ class InvalidFormatException(ArgumentException):
 
 class InvalidUnitException(ArgumentException):
     def __init__(self, waited: str, actual: str):
-        super().__init__('Expected unit with same base, {} and {} are not compatible'.format(waited, actual))
+        super().__init__('Expected unit with same util, {} and {} are not compatible'.format(waited, actual))

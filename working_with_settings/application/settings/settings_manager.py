@@ -7,7 +7,7 @@ from working_with_settings.domain.model.organization.settings import Settings
 class SettingsManager(BaseManager[SettingsState]):
 
     def __init__(self, settings_repository: SettingsRepository):
-        super().__init__(SettingsState())
+        super().__init__(SettingsState(settings=self._default_settings()))
         self._settings_repository = settings_repository
 
     @staticmethod
