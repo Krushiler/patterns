@@ -8,6 +8,7 @@ from working_with_settings.data.repository.nomenclature_repository import Nomenc
 from working_with_settings.data.repository.recipe_repository import RecipeRepository
 from working_with_settings.data.repository.settings_repository import SettingsRepository
 from working_with_settings.data.serialization.json_serializer import JsonSerializer
+from working_with_settings.data.storage.measurement_unit_storage import MeasurementUnitStorage
 from working_with_settings.data.storage.nomenclature_group_storage import NomenclatureGroupStorage
 from working_with_settings.data.storage.nomenclature_storage import NomenclatureStorage
 from working_with_settings.data.storage.recipe_storage import RecipeStorage
@@ -38,6 +39,7 @@ class Di:
         self._nomenclature_storage = None
         self._nomenclature_group_storage = None
         self._start_recipes_storage = None
+        self._measurement_unit_storage = None
 
     def get_settings_manager(self) -> SettingsManager:
         if self._settings_manager is None:
@@ -47,7 +49,9 @@ class Di:
 
     def get_start_manager(self) -> StartManager:
         if self._start_manager is None:
-            self._start_manager = StartManager(self.get_recipe_repository(), self.get_nomenclature_repository())
+            self._start_manager = StartManager(self.get_recipe_repository(), self.get_nomenclature_repository(),
+                                               self.get_measurement_unit_storage(),
+                                               self.get_measurement_units_factory())
 
         return self._start_manager
 
@@ -83,6 +87,12 @@ class Di:
             self._nomenclature_storage = NomenclatureStorage()
 
         return self._nomenclature_storage
+
+    def get_measurement_unit_storage(self) -> MeasurementUnitStorage:
+        if self._measurement_unit_storage is None:
+            self._measurement_unit_storage = MeasurementUnitStorage()
+
+        return self._measurement_unit_storage
 
     def get_nomenclature_group_storage(self) -> NomenclatureGroupStorage:
         if self._nomenclature_group_storage is None:

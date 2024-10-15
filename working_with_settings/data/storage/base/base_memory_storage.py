@@ -1,6 +1,8 @@
 from abc import ABC
 
 from working_with_settings.data.storage.base.base_storage import BaseStorage, K, V
+from working_with_settings.data.storage.filterer.list_filterer import ListFilterer
+from working_with_settings.domain.model.filter.filter import Filter
 
 
 class BaseMemoryStorage(BaseStorage[K, V], ABC):
@@ -33,3 +35,6 @@ class BaseMemoryStorage(BaseStorage[K, V], ABC):
 
     def is_empty(self) -> bool:
         return len(self._data) == 0
+
+    def get_filtered(self, filters: list[Filter]) -> list[V]:
+        return ListFilterer.apply_filters(self._data.values(), filters)
