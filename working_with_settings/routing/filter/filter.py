@@ -18,7 +18,7 @@ def filter(entity):
       - name: entity
         in: path
         type: string
-        enum: ['nomenclature', 'nomenclature_group', 'unit', 'recipe']
+        enum: ['nomenclature', 'nomenclature-group', 'unit', 'recipe', 'store', 'store-transaction']
         required: true
         default: nomenclature
     responses:

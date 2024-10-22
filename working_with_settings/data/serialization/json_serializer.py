@@ -9,6 +9,8 @@ class JsonSerializer(BaseSerializer[str]):
     def deserialize(self, data: str | list, cls: type):
         if isinstance(data, list):
             return [AbsoluteMapper.from_dict(item, cls) for item in data]
+        if isinstance(data, dict):
+            return AbsoluteMapper.from_dict(data, cls)
 
         json_data = json.loads(data.encode('utf-8'))
 
