@@ -36,7 +36,7 @@ class StoreRepository:
     def get_turnovers(self, filters: list[Filter], from_date: datetime, to_date: datetime) -> list[StoreTurnover]:
         transactions = self._store_transaction_storage.get_filtered(filters)
         transactions = filter(
-            lambda x: from_date <= x.time <= to_date,
+            lambda x: from_date <= x.time < to_date,
             transactions
         )
         return TurnoversFromTransactionsProcess().calculate(transactions)
