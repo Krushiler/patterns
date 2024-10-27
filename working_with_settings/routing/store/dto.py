@@ -26,9 +26,9 @@ class TransactionsRequestDto(BaseModel):
         self._filters = value
 
     @date_from.setter
-    def date_from(self, value: datetime.datetime):
+    def date_from(self, value: int):
         self._date_from = value
 
     @date_to.setter
-    def date_to(self, value: datetime.datetime):
+    def date_to(self, value: int):
         self._date_to = value

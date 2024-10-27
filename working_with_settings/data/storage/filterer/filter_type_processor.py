@@ -4,6 +4,7 @@ from typing import TypeVar
 from working_with_settings.data.mapping.absolute_mapper import AbsoluteMapper
 from working_with_settings.domain.model.base.base_model import BaseModel
 from working_with_settings.domain.model.filter.filter import Filter
+from working_with_settings.domain.model.filter.range_model import RangeModel
 
 T = TypeVar('T', bound=BaseModel)
 
@@ -22,7 +23,7 @@ class FilterTypeProcessor(ABC):
             if inner_value is None:
                 return False
 
-        return self._process_internal(str(inner_value).lower(), str(filter.value).lower())
+        return self._process_internal(inner_value, filter.value)
 
     @abstractmethod
     def _process_internal(self, value: str, waited_value: str) -> bool:
@@ -32,10 +33,15 @@ class FilterTypeProcessor(ABC):
 class LikeFilterTypeProcessor(FilterTypeProcessor):
 
     def _process_internal(self, value: str, waited_value: str) -> bool:
-        return value.find(waited_value) != -1
+        return str(value).lower().find(str(waited_value).lower()) != -1
 
 
 class EqualsFilterTypeProcessor(FilterTypeProcessor):
 
     def _process_internal(self, value: str, waited_value: str) -> bool:
-        return value == waited_value
+        return str(value).lower() == str(waited_value).lower()
+
+
+class BetweenFilterTypeProcessor(FilterTypeProcessor):
+    def _process_internal(self, value, waited_value: RangeModel) -> bool:
+        return waited_value.from_value <= value < waited_value.to_value

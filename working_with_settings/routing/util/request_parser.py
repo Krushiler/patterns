@@ -8,6 +8,6 @@ class RequestParser:
     def parse_body(json: dict, json_type: type) -> Either:
         serializer = Di.instance().get_json_serializer()
         try:
-            return serializer.deserialize(json, json_type)
+            return Either.with_right(serializer.deserialize(json, json_type))
         except Exception as e:
-            return ResponseFactory.error(str(e), 400)
+            return Either.with_left(ResponseFactory.error(str(e), 400))

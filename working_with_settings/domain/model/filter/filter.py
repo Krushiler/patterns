@@ -3,9 +3,9 @@ from working_with_settings.domain.model.filter.filter_type import FilterType
 
 
 class Filter(BaseModel):
-    _key: str = str
-    _value: str = str
-    _filter_type: FilterType = FilterType
+    _key: str
+    _value: str
+    _filter_type: FilterType
 
     def __init__(self, key: str, value: str, filter_type: FilterType):
         super().__init__()

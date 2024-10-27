@@ -7,8 +7,8 @@ from working_with_settings.domain.model.filter.filter import Filter
 from working_with_settings.domain.model.store.store import Store
 from working_with_settings.domain.model.store.store_transaction import StoreTransaction
 from working_with_settings.domain.model.store.store_turnover import StoreTurnover
-from working_with_settings.domain.process.store.turnovers_from_transactions_process import \
-    TurnoversFromTransactionsProcess
+from working_with_settings.domain.prototype.store.turnovers_from_transactions_prototype import \
+    TurnoversFromTransactionsPrototype
 
 
 class StoreRepository:
@@ -33,10 +33,6 @@ class StoreRepository:
     def get_store_transactions(self, filters: list[Filter]) -> list[StoreTransaction]:
         return self._store_transaction_storage.get_filtered(filters)
 
-    def get_turnovers(self, filters: list[Filter], from_date: datetime, to_date: datetime) -> list[StoreTurnover]:
+    def get_turnovers(self, filters: list[Filter], grouping: list[str]) -> list[StoreTurnover]:
         transactions = self._store_transaction_storage.get_filtered(filters)
-        transactions = filter(
-            lambda x: from_date <= x.time < to_date,
-            transactions
-        )
-        return TurnoversFromTransactionsProcess().calculate(transactions)
+        return TurnoversFromTransactionsPrototype().calculate(transactions, grouping)
