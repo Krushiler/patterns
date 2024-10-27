@@ -7,7 +7,7 @@ from working_with_settings.domain.model.measurement.measured_value import Measur
 from working_with_settings.domain.model.organization.nomenclature import Nomenclature
 from working_with_settings.domain.model.store.store import Store
 from working_with_settings.domain.model.store.store_transaction import StoreTransaction, StoreTransactionType
-from working_with_settings.domain.prototypes.store.turnovers_from_transactions_prototype import \
+from working_with_settings.domain.prototype.store.turnovers_from_transactions_prototype import \
     TurnoversFromTransactionsPrototype
 
 
@@ -43,7 +43,7 @@ def transactions(store, store_nomenclature) -> list[StoreTransaction]:
 
 def test_turnover_calculation(transactions, inject: Di):
     process = TurnoversFromTransactionsPrototype()
-    turnover = process.calculate(transactions)
+    turnover = process.calculate(transactions, ['nomenclature', 'store'])
 
     assert turnover[0].turnover == MeasuredValue(25.0, inject.get_measurement_units_factory().kilograms())
 
@@ -61,7 +61,7 @@ def test_turnover_calculation_with_different_nomenclature(transactions, inject: 
         )
     )
 
-    turnover = process.calculate(transactions)
+    turnover = process.calculate(transactions, ['nomenclature', 'store'])
 
     assert len(turnover) == 2
     assert turnover[0].turnover == MeasuredValue(25.0, inject.get_measurement_units_factory().kilograms())
