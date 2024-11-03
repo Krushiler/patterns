@@ -8,8 +8,10 @@ class StorageFactory:
     _storages_map = {
         'recipe': Di.instance().get_recipe_storage(),
         'nomenclature': Di.instance().get_nomenclature_storage(),
-        'nomenclature_group': Di.instance().get_nomenclature_group_storage(),
-        'unit': Di.instance().get_measurement_unit_storage()
+        'nomenclature-group': Di.instance().get_nomenclature_group_storage(),
+        'unit': Di.instance().get_measurement_unit_storage(),
+        'store': Di.instance().get_store_storage(),
+        'store-transaction': Di.instance().get_store_transaction_storage(),
     }
 
     @classmethod

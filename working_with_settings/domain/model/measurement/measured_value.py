@@ -12,6 +12,11 @@ class MeasuredValue(BaseModel):
         self.value = value
         self.unit = unit
 
+    def to_root(self) -> 'MeasuredValue':
+        if self.unit.base_unit is None:
+            return self
+        return MeasuredValue(self.converted_value, self.unit.base_unit).to_root()
+
     @property
     def value(self):
         return self._value

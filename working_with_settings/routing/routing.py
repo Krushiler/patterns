@@ -5,5 +5,6 @@ app = connexion.FlaskApp(__name__)
 
 from .reports.reports import *  # noqa
 from .filter.filter import *  # noqa
+from .store.store import *  # noqa
 
 swagger = Swagger(app.app)
