@@ -32,3 +32,7 @@ class StoreTurnover(BaseModel):
         if not isinstance(value, dict):
             raise InvalidTypeException(dict, type(value))
         self._group = value
+
+    @staticmethod
+    def default_grouping() -> list[str]:
+        return ['nomenclature.id', 'store.id']

@@ -55,6 +55,9 @@ class AbsoluteMapper:
     @staticmethod
     def to_dict(obj) -> dict:
 
+        if isinstance(obj, list):
+            return [AbsoluteMapper.to_dict(item) for item in obj]
+
         def get_properties(obj):
             if hasattr(obj, '__dict__'):
                 return dict(

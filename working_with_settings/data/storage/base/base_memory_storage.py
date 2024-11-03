@@ -14,7 +14,7 @@ class BaseMemoryStorage(BaseStorage[K, V], ABC):
         return key in self._data
 
     def get(self, key: K) -> V | None:
-        return self._data[key]
+        return self._data.get(key)
 
     def get_all(self, offset: int = 0, limit: int | None = None) -> list[V]:
         values = list(self._data.values())
@@ -32,6 +32,9 @@ class BaseMemoryStorage(BaseStorage[K, V], ABC):
 
     def delete(self, key: K):
         del self._data[key]
+
+    def clear(self):
+        self._data.clear()
 
     def is_empty(self) -> bool:
         return len(self._data) == 0

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from working_with_settings.application.base.base_manager import BaseManager
 from working_with_settings.application.settings.settings_state import SettingsState
 from working_with_settings.data.repository.settings_repository import SettingsRepository
@@ -16,7 +18,8 @@ class SettingsManager(BaseManager[SettingsState]):
             inn='123456789012',
             ownership_form='Ownership',
             bic='Ozwell E. Spencer',
-            account='Ozwell E. Spencer'
+            account='Ozwell E. Spencer',
+            blocking_date=datetime.now()
         )
         return settings
 
@@ -34,3 +37,9 @@ class SettingsManager(BaseManager[SettingsState]):
                 file_name=file_name
             )
             return False
+
+    def change_blocking_date(self, date: datetime):
+        settings = self.state.settings
+        settings.blocking_date = date
+        self.state = self.state.with_settings(settings)
+        self._settings_repository.save_to_file(self.state.file_name, settings)
