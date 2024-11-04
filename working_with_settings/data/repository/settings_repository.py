@@ -22,14 +22,18 @@ class SettingsRepository:
         return settings
 
     @staticmethod
-    def save_to_file(file_name: str, settings: Settings) -> None:
+    def save_to_file(file_name: str, settings: Settings) -> bool:
         if not isinstance(file_name, str):
             raise InvalidTypeException(str, type(file_name))
         if not isinstance(settings, Settings):
             raise InvalidTypeException(Settings, type(settings))
 
-        full_name = os.path.abspath(file_name)
+        try:
+            full_name = os.path.abspath(file_name)
+            with open(full_name, 'w', encoding='utf-8') as f:
+                json_data = AbsoluteMapper.to_dict(settings)
+                json.dump(json_data, f)
 
-        with open(full_name, 'w', encoding='utf-8') as f:
-            json_data = AbsoluteMapper.to_dict(settings)
-            json.dump(json_data, f)
+            return True
+        except:
+            return False

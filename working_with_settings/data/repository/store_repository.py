@@ -46,11 +46,16 @@ class StoreRepository:
     def get_turnovers(self, filters: list[Filter], grouping: list[str], blocking_date: datetime.datetime) \
             -> list[StoreTurnover]:
 
-        cached_turnovers = self._get_cached_turnovers(filters, grouping, blocking_date)
-
         time_filter = FilterUtils.find_filter(filters, 'time', FilterType.BETWEEN)
-        time_filter.value.from_value = blocking_date
 
+        if time_filter.value.from_value is not None and time_filter.value.from_value > datetime.datetime.min:
+            return TurnoversFromTransactionsPrototype.calculate(
+                self._store_transaction_storage.get_filtered(filters),
+                grouping
+            )
+
+        cached_turnovers = self._get_cached_turnovers(filters, grouping, blocking_date)
+        time_filter.value.from_value = blocking_date
         transactions = self._store_transaction_storage.get_filtered(filters)
         new_turnovers = TurnoversFromTransactionsPrototype().calculate(transactions, grouping)
 
@@ -70,9 +75,7 @@ class StoreRepository:
             self._turnover_storage.clear()
 
             transactions = self._store_transaction_storage.get_filtered(filters)
-
             turnovers = TurnoversFromTransactionsPrototype().calculate(transactions, grouping)
-
             self._turnover_storage.update(blocking_date.timestamp(), turnovers)
 
         filters = FilterUtils.remove_filter(filters, 'time', FilterType.BETWEEN)

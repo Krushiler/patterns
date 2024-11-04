@@ -33,14 +33,12 @@ class TurnoversFromTransactionsPrototype:
 
     @staticmethod
     def merge(t1: list[StoreTurnover], t2: list[StoreTurnover]) -> list[StoreTurnover]:
-        result = t2
-        for t1_i in t1:
-            found = False
-            for t2_i in t2:
-                if t1_i.group == t2_i.group:
-                    t2_i.turnover = t1_i.turnover + t2_i.turnover
-                    found = True
-                    break
-            if not found:
-                result.append(t1_i)
-        return result
+        groups = {}
+
+        for t in t1 + t2:
+            if t.group not in groups:
+                groups[t.group] = t.turnover
+                continue
+            groups[t.group] += t.turnover
+
+        return [StoreTurnover(turnover=value, group=key) for key, value in groups]
