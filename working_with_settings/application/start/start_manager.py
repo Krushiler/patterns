@@ -1,7 +1,6 @@
 from working_with_settings.application.base.base_manager import BaseManager
 from working_with_settings.application.base.base_state import BaseState
 from working_with_settings.data.factory.measurement_units_factory import MeasurementUnitsFactory
-from working_with_settings.data.factory.start_store_factory import StartStoreFactory
 from working_with_settings.data.repository.nomenclature_repository import NomenclatureRepository
 from working_with_settings.data.repository.recipe_repository import RecipeRepository
 from working_with_settings.data.repository.store_repository import StoreRepository

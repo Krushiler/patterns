@@ -3,12 +3,25 @@ from typing import TypeVar, Generic
 
 from working_with_settings.domain.model.base.base_model import BaseModel
 from working_with_settings.domain.model.filter.filter import Filter
+from working_with_settings.util.stream.base.base_observable import BaseObservable
+from working_with_settings.util.stream.streams import EventStream
 
 K = TypeVar('K')
 V = TypeVar('V', covariant=True, bound=BaseModel)
 
 
 class BaseStorage(Generic[K, V], ABC):
+    _deletions = EventStream()
+    _updates = EventStream()
+
+    @property
+    def deletions(self) -> BaseObservable:
+        return self._deletions.as_read_only()
+
+    @property
+    def updates(self) -> BaseObservable:
+        return self._updates.as_read_only()
+
     @abstractmethod
     def contains_key(self, key: K) -> bool:
         pass
@@ -25,12 +38,20 @@ class BaseStorage(Generic[K, V], ABC):
     def create(self, value: V):
         pass
 
-    @abstractmethod
     def update(self, key: K, value: V):
-        pass
+        self._update_internal(key, value)
+        self._updates.emit(value)
 
     @abstractmethod
+    def _update_internal(self, key: K, value: V):
+        pass
+
     def delete(self, key: K):
+        self._delete_internal(key)
+        self._deletions.emit(key)
+
+    @abstractmethod
+    def _delete_internal(self, key: K):
         pass
 
     @abstractmethod

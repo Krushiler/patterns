@@ -27,10 +27,10 @@ class BaseMemoryStorage(BaseStorage[K, V], ABC):
     def create(self, value: V):
         self._data[value.id] = value
 
-    def update(self, key: K, value: V):
+    def _update_internal(self, key: K, value: V):
         self._data[key] = value
 
-    def delete(self, key: K):
+    def _delete_internal(self, key: K):
         del self._data[key]
 
     def clear(self):
