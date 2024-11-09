@@ -16,6 +16,7 @@ from working_with_settings.data.storage.nomenclature_storage import Nomenclature
 from working_with_settings.data.storage.recipe_storage import RecipeStorage
 from working_with_settings.data.storage.store_storage import StoreStorage
 from working_with_settings.data.storage.store_transaction_storage import StoreTransactionStorage
+from working_with_settings.data.storage.turnover_storage import TurnoverStorage
 
 
 class Di:
@@ -28,19 +29,23 @@ class Di:
         return Di.__instance
 
     def __init__(self):
+        # region Factories
         self._measurement_units_factory = None
         self._start_nomenclature_factory = None
         self._report_factory = None
         self._start_store_factory = None
-
+        # endregion
+        # region Managers
         self._settings_manager = None
         self._start_manager = None
-
+        # endregion
+        # region Repositories
         self._settings_repository = None
         self._nomenclature_repository = None
         self._recipe_repository = None
         self._store_repository = None
-
+        # endregion
+        # region Storages
         self._recipe_storage = None
         self._nomenclature_storage = None
         self._nomenclature_group_storage = None
@@ -48,6 +53,8 @@ class Di:
         self._measurement_unit_storage = None
         self._store_storage = None
         self._store_transaction_storage = None
+        self._turnover_storage = None
+        # endregion
 
     # region Managers
     def get_settings_manager(self) -> SettingsManager:
@@ -74,30 +81,40 @@ class Di:
 
     def get_recipe_repository(self) -> RecipeRepository:
         if self._recipe_repository is None:
-            self._recipe_repository = RecipeRepository(self.get_recipe_storage(),
-                                                       self.get_start_recipes_storage().get_recipes())
+            self._recipe_repository = RecipeRepository(
+                self.get_recipe_storage(),
+                self.get_start_recipes_storage().get_recipes())
 
         return self._recipe_repository
 
     def get_nomenclature_repository(self) -> NomenclatureRepository:
         if self._nomenclature_repository is None:
-            self._nomenclature_repository = NomenclatureRepository(self.get_nomenclature_storage(),
-                                                                   self.get_nomenclature_group_storage(),
-                                                                   self.get_start_nomenclature_factory().get_nomenclatures(),
-                                                                   self.get_start_nomenclature_factory().get_nomenclature_groups())
+            self._nomenclature_repository = NomenclatureRepository(
+                self.get_nomenclature_storage(),
+                self.get_nomenclature_group_storage(),
+                self.get_start_nomenclature_factory().get_nomenclatures(),
+                self.get_start_nomenclature_factory().get_nomenclature_groups())
 
         return self._nomenclature_repository
 
     def get_store_repository(self) -> StoreRepository:
         if self._store_repository is None:
-            self._store_repository = StoreRepository(self.get_store_transaction_storage(),
-                                                     self.get_store_storage(),
-                                                     self.get_start_store_factory())
+            self._store_repository = StoreRepository(
+                self.get_store_transaction_storage(),
+                self.get_store_storage(),
+                self.get_turnover_storage(),
+                self.get_start_store_factory())
 
         return self._store_repository
 
     # endregion
     # region Storages
+
+    def get_turnover_storage(self) -> TurnoverStorage:
+        if self._turnover_storage is None:
+            self._turnover_storage = TurnoverStorage()
+
+        return self._turnover_storage
 
     def get_recipe_storage(self) -> RecipeStorage:
         if self._recipe_storage is None:
@@ -168,6 +185,7 @@ class Di:
 
         return self._start_recipes_storage
 
-    # endregion
     def get_json_serializer(self) -> JsonSerializer:
         return JsonSerializer()
+
+    # endregion

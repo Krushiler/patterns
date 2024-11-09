@@ -1,3 +1,5 @@
+import datetime
+
 from working_with_settings.data.report.base.base_report import BaseReport
 from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException, InvalidLengthException, \
     InvalidFormatException
@@ -23,9 +25,10 @@ class Settings(BaseModel):
         ReportFormat.XML: XmlReport,
         ReportFormat.RTF: RtfReport
     }
+    _blocking_date: datetime.datetime = None
 
     def __init__(self, inn: str = None, bic: str = None, account: str = None, ownership_form: str = None,
-                 default_report_format: ReportFormat = ReportFormat.JSON):
+                 default_report_format: ReportFormat = ReportFormat.JSON, blocking_date: datetime.datetime = None):
         super().__init__()
 
         self.inn = inn
@@ -33,6 +36,7 @@ class Settings(BaseModel):
         self.account = account
         self.ownership_form = ownership_form
         self.default_report_format = default_report_format
+        self.blocking_date = blocking_date
 
     @property
     def inn(self) -> str:
@@ -100,3 +104,13 @@ class Settings(BaseModel):
             if not issubclass(v, BaseReport):
                 raise InvalidTypeException(BaseReport, type(v))
         self._report_map = value
+
+    @property
+    def blocking_date(self) -> datetime.datetime:
+        return self._blocking_date
+
+    @blocking_date.setter
+    def blocking_date(self, value: datetime.datetime):
+        if not isinstance(value, datetime.datetime):
+            raise InvalidTypeException(datetime.datetime, type(value))
+        self._blocking_date = value

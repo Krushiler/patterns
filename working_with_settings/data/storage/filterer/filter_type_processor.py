@@ -11,12 +11,17 @@ T = TypeVar('T', bound=BaseModel)
 
 class FilterTypeProcessor(ABC):
 
-    def process(self, item: T, filter: Filter) -> bool:
+    def process(self, item: T, filter: Filter, value_to_filter=None) -> bool:
         item_dict = AbsoluteMapper.to_dict(item)
 
         keys_array = filter.key.split('.')
 
         inner_value = item_dict
+
+        if value_to_filter is not None:
+            inner_value = inner_value.get(value_to_filter, None)
+            if inner_value is None:
+                return False
 
         for key in keys_array:
             inner_value = inner_value.get(key, None)
