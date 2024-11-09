@@ -3,6 +3,7 @@ from working_with_settings.data.storage.nomenclature_storage import Nomenclature
 from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException
 from working_with_settings.domain.model.organization.nomenclature import Nomenclature
 from working_with_settings.domain.model.organization.nomenclature_group import NomenclatureGroup
+from working_with_settings.util.stream.base.base_observable import BaseObservable
 
 
 class NomenclatureRepository:
@@ -33,3 +34,18 @@ class NomenclatureRepository:
         if self._nomenclature_group_storage.is_empty():
             for group in self._start_nomenclature_group:
                 self._nomenclature_group_storage.create(group)
+
+    def create_nomenclature(self, nomenclature: Nomenclature):
+        return self._nomenclature_storage.create(nomenclature)
+
+    def update_nomenclature(self, nomenclature_id: str, nomenclature: Nomenclature):
+        return self._nomenclature_storage.update(nomenclature_id, nomenclature)
+
+    def delete_nomenclature(self, nomenclature_id: str):
+        return self._nomenclature_storage.delete(nomenclature_id)
+
+    def watch_nomenclature_deletions(self) -> BaseObservable[str]:
+        return self._nomenclature_storage.deletions
+
+    def watch_nomenclature_updates(self) -> BaseObservable[Nomenclature]:
+        return self._nomenclature_storage.updates

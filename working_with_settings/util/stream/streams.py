@@ -7,12 +7,19 @@ T = TypeVar('T')
 
 
 class EventStream(BaseStream[T]):
+    """
+    Горячий поток
+    """
+
     def emit(self, value: T):
         for subscription in self._subscriptions:
             subscription.call(value)
 
 
 class ValueStream(BaseStream[T]):
+    """
+    Холодный поток
+    """
     _value: T | None = None
 
     @classmethod

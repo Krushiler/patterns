@@ -11,15 +11,15 @@ V = TypeVar('V', covariant=True, bound=BaseModel)
 
 
 class BaseStorage(Generic[K, V], ABC):
-    _deletions = EventStream()
-    _updates = EventStream()
+    _deletions: EventStream[str] = EventStream()
+    _updates: EventStream[V] = EventStream()
 
     @property
-    def deletions(self) -> BaseObservable:
+    def deletions(self) -> BaseObservable[str]:
         return self._deletions.as_read_only()
 
     @property
-    def updates(self) -> BaseObservable:
+    def updates(self) -> BaseObservable[str]:
         return self._updates.as_read_only()
 
     @abstractmethod

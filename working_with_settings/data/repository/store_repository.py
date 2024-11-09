@@ -37,6 +37,9 @@ class StoreRepository:
             for transaction in self._start_store_factory.store_transactions():
                 self._store_transaction_storage.create(transaction)
 
+    def update_transaction(self, transaction_id: str, transaction: StoreTransaction):
+        self._store_transaction_storage.update(transaction_id, transaction)
+
     def get_stores(self, filters: list[Filter]) -> list[Store]:
         return self._store_storage.get_filtered(filters)
 
