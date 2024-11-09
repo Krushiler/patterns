@@ -5,7 +5,7 @@ from working_with_settings.data.repository.recipe_repository import RecipeReposi
 from working_with_settings.data.repository.store_repository import StoreRepository
 from working_with_settings.data.storage_finder.nomenclature_storage_finder import NomenclatureStorageFinder
 from working_with_settings.domain.model.organization.nomenclature import Nomenclature
-from working_with_settings.util.stream.stream_subscription import StreamSubscription
+from working_with_settings.util.stream.base.base_observable import StreamSubscription
 
 
 class NomenclatureManager(BaseManager[BaseState]):

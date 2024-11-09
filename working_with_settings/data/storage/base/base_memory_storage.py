@@ -8,6 +8,7 @@ from working_with_settings.domain.model.filter.filter import Filter
 class BaseMemoryStorage(BaseStorage[K, V], ABC):
 
     def __init__(self):
+        super().__init__()
         self._data = {}
 
     def contains_key(self, key: K) -> bool:
@@ -31,7 +32,8 @@ class BaseMemoryStorage(BaseStorage[K, V], ABC):
         self._data[key] = value
 
     def _delete_internal(self, key: K):
-        del self._data[key]
+        if key in self._data:
+            del self._data[key]
 
     def clear(self):
         self._data.clear()

@@ -142,6 +142,9 @@ class Di:
 
     @lazy
     def get_nomenclature_storage_finder(self) -> NomenclatureStorageFinder:
-        return NomenclatureStorageFinder()
+        return NomenclatureStorageFinder(
+            transaction_storage=self.get_store_transaction_storage(),
+            recipe_storage=self.get_recipe_storage()
+        )
 
     # endregion

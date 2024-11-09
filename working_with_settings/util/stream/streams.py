@@ -1,7 +1,7 @@
 from typing import TypeVar
 
+from working_with_settings.util.stream.base.base_observable import StreamSubscription
 from working_with_settings.util.stream.base.base_stream import BaseStream
-from working_with_settings.util.stream.stream_subscription import StreamSubscription
 
 T = TypeVar('T')
 

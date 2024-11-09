@@ -1,6 +1,5 @@
 from working_with_settings.data.storage.recipe_storage import RecipeStorage
 from working_with_settings.data.storage.store_transaction_storage import StoreTransactionStorage
-from working_with_settings.di.di import Di
 from working_with_settings.domain.model.filter.filter import Filter
 from working_with_settings.domain.model.filter.filter_type import FilterType
 from working_with_settings.domain.model.recipe.recipe import Recipe
@@ -32,9 +31,9 @@ class NomenclatureStorageFinder:
     _transaction_storage: StoreTransactionStorage
     _recipe_storage: RecipeStorage
 
-    def __init__(self):
-        self._transaction_storage = Di.instance().get_store_transaction_storage()
-        self._recipe_storage = Di.instance().get_recipe_storage()
+    def __init__(self, transaction_storage, recipe_storage):
+        self._transaction_storage = transaction_storage
+        self._recipe_storage = recipe_storage
 
     @staticmethod
     def _create_nomenclature_filter(key: str, nomenclature_id: str) -> Filter:
@@ -45,10 +44,11 @@ class NomenclatureStorageFinder:
         )
 
     def find_nomenclature_dependencies(self, nomenclature_id: str) -> NomenclatureDependants:
-        recipes = self._recipe_storage.get_filtered(
+        recipes = self._recipe_storage.get_filtered([
             self._create_nomenclature_filter('ingredients.nomenclature.id', nomenclature_id)
-        )
-        transactions = self._transaction_storage.get_filtered(
+        ])
+        transactions = self._transaction_storage.get_filtered([
             self._create_nomenclature_filter('nomenclature.id', nomenclature_id)
-        )
+        ])
+
         return NomenclatureDependants(recipes=recipes, transactions=transactions)
