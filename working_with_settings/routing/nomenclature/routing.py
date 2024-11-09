@@ -1,3 +1,5 @@
+import uuid
+
 import flask
 
 from working_with_settings.application.organization.nomenclature_manager import NomenclatureManager
@@ -57,6 +59,8 @@ def put_nomenclature():
         return request.left
 
     nomenclature = request.right
+
+    nomenclature.id = str(uuid.uuid4())
 
     nomenclature_manager: NomenclatureManager = Di.instance().get_nomenclature_manager()
     nomenclature_manager.create_nomenclature(nomenclature)
