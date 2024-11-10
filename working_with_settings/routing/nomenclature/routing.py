@@ -21,6 +21,7 @@ def update_nomenclature():
 
     nomenclature = request.right
     nomenclature_manager: NomenclatureManager = Di.instance().get_nomenclature_manager()
+    nomenclature.id = nomenclature_id
     nomenclature_manager.update_nomenclature(nomenclature_id, nomenclature)
 
     return ResponseFactory.success_no_data()
