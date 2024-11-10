@@ -1,36 +1,35 @@
 from working_with_settings.application.base.base_manager import BaseManager
 from working_with_settings.application.base.base_state import BaseState
 from working_with_settings.data.repository.nomenclature_repository import NomenclatureRepository
+from working_with_settings.data.repository.store_repository import StoreRepository
 from working_with_settings.data.storage_finder.nomenclature.nomenclature_storage_finder import NomenclatureStorageFinder
 from working_with_settings.domain.model.organization.nomenclature import Nomenclature
 from working_with_settings.util.stream.base.base_observable import StreamSubscription
 
 
-class NomenclatureManager(BaseManager[BaseState]):
+class StoreManager(BaseManager[BaseState]):
     _nomenclature_repository: NomenclatureRepository
+    _store_repository: StoreRepository
     _nomenclature_storage_finder: NomenclatureStorageFinder
 
     _nomenclature_updates_subscription: StreamSubscription
 
-    def __init__(self, nomenclature_repository, nomenclature_storage_finder):
+    def __init__(self, nomenclature_repository, store_repository, nomenclature_storage_finder):
         super().__init__(BaseState())
         self._nomenclature_repository = nomenclature_repository
+        self._store_repository = store_repository
         self._nomenclature_storage_finder = nomenclature_storage_finder
 
-    def update_nomenclature(self, nomenclature_id: str, nomenclature: Nomenclature):
-        self._nomenclature_repository.update_nomenclature(nomenclature_id, nomenclature)
+    def init(self):
+        self._nomenclature_updates_subscription = self._nomenclature_repository.watch_nomenclature_updates() \
+            .subscribe(self._on_nomenclature_updated)
 
-    def delete_nomenclature(self, nomenclature_id: str) -> bool:
-        if self._nomenclature_storage_finder.has_nomenclature_dependants(nomenclature_id):
-            return False
-        self._nomenclature_repository.delete_nomenclature(nomenclature_id)
-        return True
+    def _on_nomenclature_updated(self, nomenclature: Nomenclature):
+        transactions = self._nomenclature_storage_finder.find_dependant_transactions(nomenclature.id)
 
-    def get_nomenclature(self, nomenclature_id: str):
-        return self._nomenclature_repository.get_nomenclature(nomenclature_id)
-
-    def create_nomenclature(self, nomenclature: Nomenclature):
-        return self._nomenclature_repository.create_nomenclature(nomenclature)
+        for transaction in transactions:
+            transaction.nomenclature = nomenclature
+            self._store_repository.update_transaction(transaction.id, transaction)
 
     def close(self):
         self._nomenclature_updates_subscription.close()

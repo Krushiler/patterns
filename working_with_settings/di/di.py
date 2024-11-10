@@ -1,4 +1,6 @@
 from working_with_settings.application.organization.nomenclature_manager import NomenclatureManager
+from working_with_settings.application.organization.recipe_manager import RecipeManager
+from working_with_settings.application.organization.store_manager import StoreManager
 from working_with_settings.application.settings.settings_manager import SettingsManager
 from working_with_settings.application.start.start_manager import StartManager
 from working_with_settings.data.factory.measurement_units_factory import MeasurementUnitsFactory
@@ -18,7 +20,7 @@ from working_with_settings.data.storage.recipe_storage import RecipeStorage
 from working_with_settings.data.storage.store_storage import StoreStorage
 from working_with_settings.data.storage.store_transaction_storage import StoreTransactionStorage
 from working_with_settings.data.storage.turnover_storage import TurnoverStorage
-from working_with_settings.data.storage_finder.nomenclature_storage_finder import NomenclatureStorageFinder
+from working_with_settings.data.storage_finder.nomenclature.nomenclature_storage_finder import NomenclatureStorageFinder
 from working_with_settings.di.di_utils import lazy
 
 
@@ -50,9 +52,23 @@ class Di:
     def get_nomenclature_manager(self) -> NomenclatureManager:
         return NomenclatureManager(
             nomenclature_repository=self.get_nomenclature_repository(),
-            store_repository=self.get_store_repository(),
-            recipe_repository=self.get_recipe_repository(),
             nomenclature_storage_finder=self.get_nomenclature_storage_finder(),
+        )
+
+    @lazy
+    def get_recipe_manager(self) -> RecipeManager:
+        return RecipeManager(
+            nomenclature_repository=self.get_nomenclature_repository(),
+            nomenclature_storage_finder=self.get_nomenclature_storage_finder(),
+            recipe_repository=self.get_recipe_repository(),
+        )
+
+    @lazy
+    def get_store_manager(self) -> StoreManager:
+        return StoreManager(
+            nomenclature_repository=self.get_nomenclature_repository(),
+            nomenclature_storage_finder=self.get_nomenclature_storage_finder(),
+            store_repository=self.get_store_repository(),
         )
 
     # endregion
