@@ -71,6 +71,10 @@ class AbsoluteMapper:
         if type(obj) in AbsoluteMapper._primitives:
             return obj
 
+        if isinstance(obj, Enum):
+            for value in obj.__class__.__members__.values():
+                return value.value
+
         props = get_properties(obj)
 
         if isinstance(obj, BaseModel):

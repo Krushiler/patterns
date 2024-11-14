@@ -34,7 +34,8 @@ class Dao:
     def load(self):
         if os.path.exists(self._full_name):
             with open(self._full_name, 'r', encoding='utf-8') as f:
-                self._data.emit(json.loads(f.read()))
+                data = json.loads(f.read())
+                self._data.emit(data)
 
     def watch_data(self):
         return self._data.as_read_only()

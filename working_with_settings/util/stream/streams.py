@@ -36,6 +36,7 @@ class ValueStream(BaseStream[T]):
 
     def emit(self, value: T):
         self._has_data = True
+        self._value = value
         for subscription in self._subscriptions:
             subscription.call(value)
 

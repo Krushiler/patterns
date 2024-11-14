@@ -1,0 +1,78 @@
+[
+  {
+    "amount": {
+      "converted_value": 100000.0,
+      "id": "79a26f84-4da5-41f8-8c3d-6584b33ee423",
+      "unit": {
+        "base_unit": {
+          "base_unit": null,
+          "convertion_ratio": 1.0,
+          "id": "ddd71579-4ca0-4552-84be-6357c4176f9c",
+          "name": "гр"
+        },
+        "convertion_ratio": 1000.0,
+        "id": "c71a4b4f-25ad-4758-9aa2-5df22cb3a9f6",
+        "name": "кг"
+      },
+      "value": 100.0
+    },
+    "id": "d9f2c12d-ae12-48e1-b60b-18ce3a6b7b44",
+    "nomenclature": {
+      "id": "61a12a93-d9ec-4cb7-a627-263acf7142b9",
+      "name": "Пшеничная мука",
+      "nomenclature_group": {
+        "id": "3f307250-d861-4114-9336-daacd7214b08",
+        "name": "Еда"
+      },
+      "unit": {
+        "base_unit": {
+          "base_unit": null,
+          "convertion_ratio": 1.0,
+          "id": "ddd71579-4ca0-4552-84be-6357c4176f9c",
+          "name": "гр"
+        },
+        "convertion_ratio": 1000.0,
+        "id": "c71a4b4f-25ad-4758-9aa2-5df22cb3a9f6",
+        "name": "кг"
+      }
+    }
+  },
+  {
+    "amount": {
+      "converted_value": 1000.0,
+      "id": "6ef5b7e7-1a31-4252-852c-c07bc3cd7c98",
+      "unit": {
+        "base_unit": {
+          "base_unit": null,
+          "convertion_ratio": 1.0,
+          "id": "7a0fdfe2-6103-4ae1-a250-d0cfdf2dfee5",
+          "name": "мл"
+        },
+        "convertion_ratio": 1000.0,
+        "id": "37e3d88c-3b50-4e8e-af56-709ea3baa3ef",
+        "name": "л"
+      },
+      "value": 1.0
+    },
+    "id": "3a0ab177-b845-49b7-b149-4acd4f0031da",
+    "nomenclature": {
+      "id": "dd1948c5-901e-4d9d-98b9-1cdbf9278da9",
+      "name": "Молоко",
+      "nomenclature_group": {
+        "id": "3f307250-d861-4114-9336-daacd7214b08",
+        "name": "Еда"
+      },
+      "unit": {
+        "base_unit": {
+          "base_unit": null,
+          "convertion_ratio": 1.0,
+          "id": "7a0fdfe2-6103-4ae1-a250-d0cfdf2dfee5",
+          "name": "мл"
+        },
+        "convertion_ratio": 1000.0,
+        "id": "37e3d88c-3b50-4e8e-af56-709ea3baa3ef",
+        "name": "л"
+      }
+    }
+  }
+]

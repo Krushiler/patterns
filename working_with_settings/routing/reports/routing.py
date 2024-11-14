@@ -1,3 +1,5 @@
+import datetime
+
 import flask
 
 from working_with_settings.data.report.base.base_report import BaseReport
@@ -137,3 +139,49 @@ def recipes():
     recipes = Di.instance().get_recipe_repository().get_recipes()
 
     return report.create(recipes)
+
+
+@app.route('/api/reports/osv', methods=['GET'])
+def osv():
+    """
+      Retrieve OSV report
+       ---
+       parameters:
+         - name: format
+           in: query
+           type: string
+           required: true
+           description: ReportFormat key name
+       responses:
+         200:
+           description: Recipes report
+         400:
+           description: Invalid report format
+       """
+
+    # try:
+    data = flask.request.args
+    start_date_timestamp_str = data.get('start_date')
+    start_date = datetime.datetime.fromtimestamp(float(start_date_timestamp_str), tz=datetime.timezone.utc)
+    end_date_timestamp_str = data.get('end_date')
+    end_date = datetime.datetime.fromtimestamp(float(end_date_timestamp_str), tz=datetime.timezone.utc)
+    store_id = data.get('store')
+
+    res = _get_report()
+    if res.is_left:
+        return res.left
+    report = res.right
+
+    settings = Di.instance().get_settings_manager().state.settings
+
+    reports = Di.instance().get_store_manager().get_osv_nomenclature_reports(
+        start_date,
+        end_date,
+        store_id,
+        settings.blocking_date
+    )
+
+    return report.create(reports)
+    #
+    # except:
+    #     return ResponseFactory.error('Invalid parameters', 400)

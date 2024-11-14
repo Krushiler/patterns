@@ -9,7 +9,7 @@ class MarkdownReport(BaseReport):
         markdown_lines = []
         flat_dicts = [self._flatten_dict(item) for item in obj]
 
-        class_name = original_obj[0].__class__.__name__
+        class_name = original_obj.__class__.__name__
 
         for i, flat_dict in enumerate(flat_dicts, 1):
             markdown_lines.append(f"### {class_name} {i}\n")

@@ -51,7 +51,8 @@ class StoreRepository:
 
         time_filter = FilterUtils.find_filter(filters, 'time', FilterType.BETWEEN)
 
-        if time_filter.value.from_value is not None and time_filter.value.from_value > datetime.datetime.min:
+        if time_filter.value.from_value is not None and time_filter.value.from_value > datetime.datetime.min.replace(
+                tzinfo=datetime.timezone.utc).timestamp():
             return TurnoversFromTransactionsPrototype.calculate(
                 self._store_transaction_storage.get_filtered(filters),
                 grouping

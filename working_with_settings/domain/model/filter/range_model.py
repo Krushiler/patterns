@@ -13,9 +13,15 @@ class RangeModel:
         self.from_value = from_value
         self.to_value = to_value
 
+    @staticmethod
+    def _map_value(value):
+        if isinstance(value, datetime.datetime):
+            return value.timestamp()
+        return value
+
     @property
-    def from_value(self):
-        return self._from_value
+    def from_value(self) -> float:
+        return RangeModel._map_value(self._from_value)
 
     @from_value.setter
     def from_value(self, value):
@@ -24,8 +30,8 @@ class RangeModel:
         self._from_value = value
 
     @property
-    def to_value(self):
-        return self._to_value
+    def to_value(self) -> float:
+        return RangeModel._map_value(self._to_value)
 
     @to_value.setter
     def to_value(self, value):
