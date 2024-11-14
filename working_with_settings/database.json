@@ -1,0 +1,875 @@
+{
+    "RecipeStorage": {
+        "11b54da2-2398-4216-a3ca-a9ad976c9ca7": {
+            "name": "Панкейки на молоке",
+            "cooking_time": 1500.0,
+            "ingredients": [
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Пшеничная мука",
+                        "id": "7f8d840f-d776-488a-aa8b-bc193eed8a83"
+                    },
+                    "measured_amount": {
+                        "value": 150.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 150.0,
+                        "id": "1b319bab-4a20-4b9d-b7b7-8d2d78993e83"
+                    },
+                    "id": "1796072b-e00b-447d-80a5-8871a9a3564c"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "л",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "мл",
+                                "base_unit": null,
+                                "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+                            },
+                            "id": "e0901252-b253-4a06-b876-69422efb3451"
+                        },
+                        "name": "Молоко",
+                        "id": "4649694b-355f-418b-a442-6058e11f6961"
+                    },
+                    "measured_amount": {
+                        "value": 200.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "мл",
+                            "base_unit": null,
+                            "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+                        },
+                        "converted_value": 200.0,
+                        "id": "ceeb8837-34fc-4aa5-b79d-009cd962d1ab"
+                    },
+                    "id": "921e889a-994f-47d6-be5c-6b8735396090"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 10.0,
+                            "name": "десяток",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "шт",
+                                "base_unit": null,
+                                "id": "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa"
+                            },
+                            "id": "b605ed18-dc52-40c4-9586-2ff90ba40732"
+                        },
+                        "name": "Яйцо",
+                        "id": "9f4baaba-908a-4012-ae46-c2a21db105a9"
+                    },
+                    "measured_amount": {
+                        "value": 1.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "шт",
+                            "base_unit": null,
+                            "id": "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa"
+                        },
+                        "converted_value": 1.0,
+                        "id": "b78de0e2-6a07-493c-94d5-95f3f8d83972"
+                    },
+                    "id": "7bff2d8c-02fa-42af-95e1-78ad8da8773e"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Сахар",
+                        "id": "ccba8c02-a800-411f-90f4-ea83ed253ca5"
+                    },
+                    "measured_amount": {
+                        "value": 50.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 50.0,
+                        "id": "c392c911-7b9d-4065-aa2f-8591cfbdbc50"
+                    },
+                    "id": "30e9b478-6140-4f17-a8ec-3437f7e9ea81"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Разрыхлитель",
+                        "id": "b4893a8d-4b9e-4d47-a892-9fbe3709b252"
+                    },
+                    "measured_amount": {
+                        "value": 10.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 10.0,
+                        "id": "41d05759-12fb-4c07-bfb8-11deed3d462a"
+                    },
+                    "id": "615130e2-516f-4610-a790-4e09abcd1163"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Сливочное масло",
+                        "id": "94e02cd1-c155-47b3-8f61-bef1d0e08327"
+                    },
+                    "measured_amount": {
+                        "value": 50.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 50.0,
+                        "id": "4f1dae62-ef2a-4495-97cc-4bdbbfbdf6bd"
+                    },
+                    "id": "ae17f1df-d568-417c-85ee-a32f6617eb2d"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Соль",
+                        "id": "6fcfefa9-9ed1-4c1b-9f04-a3decb30bfc6"
+                    },
+                    "measured_amount": {
+                        "value": 2.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 2.0,
+                        "id": "3f288b1b-8801-4a2b-9b06-c9573202d31e"
+                    },
+                    "id": "f153a4fb-e77b-4e8e-a67e-479535b67f81"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Ванильный сахар",
+                        "id": "c0f8b4af-18ff-4961-8ed1-7270539fd52e"
+                    },
+                    "measured_amount": {
+                        "value": 10.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 10.0,
+                        "id": "e4ba43be-a47b-41ec-8186-eb165413d769"
+                    },
+                    "id": "4ae33650-ea28-4e07-8e4d-74602c9cf6bc"
+                }
+            ],
+            "cooking_steps": [
+                "Как приготовить панкейки на молоке? Подготовьте все необходимые ингредиенты. Порции рассчитаны примерно на 10 небольших панкейков диаметром около 8 см.",
+                "В глубокой миске взбейте яйцо с сахаром и ванильным сахаром до легкой пены.",
+                "Добавьте в смесь молоко и размешайте венчиком до однородности.",
+                "Растопите сливочное масло на слабом огне или в микроволновке, дайте ему немного остыть и добавьте в смесь. Снова перемешайте.",
+                "В отдельной миске просейте муку вместе с разрыхлителем и солью.",
+                "Постепенно добавляйте сухие ингредиенты в жидкую смесь, постоянно помешивая венчиком, чтобы избежать комочков. В итоге у вас должно получиться однородное, густое тесто.",
+                "Разогрейте сковороду на среднем огне, слегка смажьте ее маслом. Для жарки панкейков можно использовать совсем немного масла, чтобы они не были слишком жирными.",
+                "Вылейте небольшое количество теста на сковороду, формируя круглые лепешки. Жарьте на среднем огне до появления пузырьков на поверхности, затем аккуратно переверните и поджарьте с другой стороны до золотистого цвета.",
+                "Подавайте панкейки с медом, ягодами, сиропом или сметаной по вкусу."
+            ],
+            "id": "11b54da2-2398-4216-a3ca-a9ad976c9ca7"
+        },
+        "b12c0af0-0033-4475-8689-e3537cc1ff44": {
+            "name": "ВАФЛИ ХРУСТЯЩИЕ В ВАФЕЛЬНИЦЕ",
+            "cooking_time": 1200.0,
+            "ingredients": [
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Пшеничная мука",
+                        "id": "7f8d840f-d776-488a-aa8b-bc193eed8a83"
+                    },
+                    "measured_amount": {
+                        "value": 100.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 100.0,
+                        "id": "8be19258-5eab-48da-a08f-574ace01fedc"
+                    },
+                    "id": "72c861d5-0ecd-4433-930b-99751b8b2fda"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Сахар",
+                        "id": "ccba8c02-a800-411f-90f4-ea83ed253ca5"
+                    },
+                    "measured_amount": {
+                        "value": 80.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 80.0,
+                        "id": "58d26fa7-8a8e-4744-915c-af49895f833f"
+                    },
+                    "id": "ff2c8f22-3281-438c-b645-5406b9930b02"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Сливочное масло",
+                        "id": "94e02cd1-c155-47b3-8f61-bef1d0e08327"
+                    },
+                    "measured_amount": {
+                        "value": 70.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 70.0,
+                        "id": "5a656eaa-4c83-49c4-836b-028d0d098df7"
+                    },
+                    "id": "5789aacc-f68c-4973-bb0c-e555d4293910"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 10.0,
+                            "name": "десяток",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "шт",
+                                "base_unit": null,
+                                "id": "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa"
+                            },
+                            "id": "b605ed18-dc52-40c4-9586-2ff90ba40732"
+                        },
+                        "name": "Яйцо",
+                        "id": "9f4baaba-908a-4012-ae46-c2a21db105a9"
+                    },
+                    "measured_amount": {
+                        "value": 1.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "шт",
+                            "base_unit": null,
+                            "id": "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa"
+                        },
+                        "converted_value": 1.0,
+                        "id": "45e7ceb4-8bec-400d-9669-5113c2e6a708"
+                    },
+                    "id": "ff990732-aa8d-4334-8777-cc3be8378b1f"
+                },
+                {
+                    "nomenclature": {
+                        "nomenclature_group": {
+                            "name": "Еда",
+                            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                        },
+                        "unit": {
+                            "convertion_ratio": 1000.0,
+                            "name": "кг",
+                            "base_unit": {
+                                "convertion_ratio": 1.0,
+                                "name": "гр",
+                                "base_unit": null,
+                                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                            },
+                            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                        },
+                        "name": "Ванильный сахар",
+                        "id": "c0f8b4af-18ff-4961-8ed1-7270539fd52e"
+                    },
+                    "measured_amount": {
+                        "value": 5.0,
+                        "unit": {
+                            "convertion_ratio": 1.0,
+                            "name": "гр",
+                            "base_unit": null,
+                            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                        },
+                        "converted_value": 5.0,
+                        "id": "3658658a-32e0-4786-86d3-4bda432b1cda"
+                    },
+                    "id": "2ba49084-69db-4060-8333-18eb70e7c11e"
+                }
+            ],
+            "cooking_steps": [
+                "Как испечь вафли хрустящие в вафельнице? Подготовьте необходимые продукты. Из данного количества у меня получилось 8 штук диаметром около 10 см.",
+                "Масло положите в сотейник с толстым дном. Растопите его на маленьком огне на плите, на водяной бане либо в микроволновке.",
+                "Добавьте в теплое масло сахар. Перемешайте венчиком до полного растворения сахара. От тепла сахар довольно быстро растает.",
+                "Добавьте в масло яйцо. Предварительно все-таки проверьте масло, не горячее ли оно, иначе яйцо может свариться. Перемешайте яйцо с маслом до однородности.",
+                "Всыпьте муку, добавьте ванилин.",
+                "Перемешайте массу венчиком до состояния гладкого однородного теста.",
+                "Разогрейте вафельницу по инструкции к ней. У меня очень старая, еще советских времен электровафельница. Она может и не очень красивая, но печет замечательно! Я не смазываю вафельницу маслом, в тесте достаточно жира, да и к ней уже давно ничего не прилипает. Но вы смотрите по своей модели. Выкладывайте тесто по столовой ложке. Можно класть немного меньше теста, тогда вафли будут меньше и их получится больше.",
+                "Пеките вафли несколько минут до золотистого цвета. Осторожно откройте вафельницу, она очень горячая! Снимите вафлю лопаткой. Горячая она очень мягкая, как блинчик."
+            ],
+            "id": "b12c0af0-0033-4475-8689-e3537cc1ff44"
+        }
+    },
+    "NomenclatureStorage": {
+        "7f8d840f-d776-488a-aa8b-bc193eed8a83": {
+            "nomenclature_group": {
+                "name": "Еда",
+                "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "кг",
+                "base_unit": {
+                    "convertion_ratio": 1.0,
+                    "name": "гр",
+                    "base_unit": null,
+                    "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                },
+                "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+            },
+            "name": "Пшеничная мука",
+            "id": "7f8d840f-d776-488a-aa8b-bc193eed8a83"
+        },
+        "4649694b-355f-418b-a442-6058e11f6961": {
+            "nomenclature_group": {
+                "name": "Еда",
+                "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "л",
+                "base_unit": {
+                    "convertion_ratio": 1.0,
+                    "name": "мл",
+                    "base_unit": null,
+                    "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+                },
+                "id": "e0901252-b253-4a06-b876-69422efb3451"
+            },
+            "name": "Молоко",
+            "id": "4649694b-355f-418b-a442-6058e11f6961"
+        },
+        "9f4baaba-908a-4012-ae46-c2a21db105a9": {
+            "nomenclature_group": {
+                "name": "Еда",
+                "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+            },
+            "unit": {
+                "convertion_ratio": 10.0,
+                "name": "десяток",
+                "base_unit": {
+                    "convertion_ratio": 1.0,
+                    "name": "шт",
+                    "base_unit": null,
+                    "id": "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa"
+                },
+                "id": "b605ed18-dc52-40c4-9586-2ff90ba40732"
+            },
+            "name": "Яйцо",
+            "id": "9f4baaba-908a-4012-ae46-c2a21db105a9"
+        },
+        "ccba8c02-a800-411f-90f4-ea83ed253ca5": {
+            "nomenclature_group": {
+                "name": "Еда",
+                "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "кг",
+                "base_unit": {
+                    "convertion_ratio": 1.0,
+                    "name": "гр",
+                    "base_unit": null,
+                    "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                },
+                "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+            },
+            "name": "Сахар",
+            "id": "ccba8c02-a800-411f-90f4-ea83ed253ca5"
+        },
+        "b4893a8d-4b9e-4d47-a892-9fbe3709b252": {
+            "nomenclature_group": {
+                "name": "Еда",
+                "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "кг",
+                "base_unit": {
+                    "convertion_ratio": 1.0,
+                    "name": "гр",
+                    "base_unit": null,
+                    "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                },
+                "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+            },
+            "name": "Разрыхлитель",
+            "id": "b4893a8d-4b9e-4d47-a892-9fbe3709b252"
+        },
+        "94e02cd1-c155-47b3-8f61-bef1d0e08327": {
+            "nomenclature_group": {
+                "name": "Еда",
+                "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "кг",
+                "base_unit": {
+                    "convertion_ratio": 1.0,
+                    "name": "гр",
+                    "base_unit": null,
+                    "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                },
+                "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+            },
+            "name": "Сливочное масло",
+            "id": "94e02cd1-c155-47b3-8f61-bef1d0e08327"
+        }
+    },
+    "NomenclatureGroupStorage": {
+        "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4": {
+            "name": "Еда",
+            "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+        }
+    },
+    "StoreStorage": {
+        "72426c07-a63f-4d06-a6e8-c37cc424dd3b": {
+            "address": "Москва, ул. Ленина, 7",
+            "id": "72426c07-a63f-4d06-a6e8-c37cc424dd3b"
+        },
+        "9860b282-4b32-4f18-a005-e48d0b6ab450": {
+            "address": "Новосибирск, ул. Кирова, 15",
+            "id": "9860b282-4b32-4f18-a005-e48d0b6ab450"
+        }
+    },
+    "StoreTransactionStorage": {
+        "7a03fb5d-a949-44c5-8af1-f078047af535": {
+            "store": {
+                "address": "Москва, ул. Ленина, 7",
+                "id": "72426c07-a63f-4d06-a6e8-c37cc424dd3b"
+            },
+            "nomenclature": {
+                "nomenclature_group": {
+                    "name": "Еда",
+                    "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                },
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "кг",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "гр",
+                        "base_unit": null,
+                        "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                    },
+                    "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                },
+                "name": "Пшеничная мука",
+                "id": "7f8d840f-d776-488a-aa8b-bc193eed8a83"
+            },
+            "amount": {
+                "value": 50.0,
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "кг",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "гр",
+                        "base_unit": null,
+                        "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                    },
+                    "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                },
+                "converted_value": 50000.0,
+                "id": "d1e25599-d25a-4895-8718-feb86ac1e0bd"
+            },
+            "transaction_type": null,
+            "time": 1577811909.0,
+            "id": "7a03fb5d-a949-44c5-8af1-f078047af535"
+        },
+        "10fcf826-611a-4322-af27-b332a11b3ecd": {
+            "store": {
+                "address": "Новосибирск, ул. Кирова, 15",
+                "id": "9860b282-4b32-4f18-a005-e48d0b6ab450"
+            },
+            "nomenclature": {
+                "nomenclature_group": {
+                    "name": "Еда",
+                    "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                },
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "кг",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "гр",
+                        "base_unit": null,
+                        "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                    },
+                    "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                },
+                "name": "Пшеничная мука",
+                "id": "7f8d840f-d776-488a-aa8b-bc193eed8a83"
+            },
+            "amount": {
+                "value": 50.0,
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "кг",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "гр",
+                        "base_unit": null,
+                        "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                    },
+                    "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                },
+                "converted_value": 50000.0,
+                "id": "4038ccfa-22cf-4e0b-ad77-93114308809a"
+            },
+            "transaction_type": null,
+            "time": 1578002587.0,
+            "id": "10fcf826-611a-4322-af27-b332a11b3ecd"
+        },
+        "5668ec35-cbfc-41e5-a47c-70a6350b0047": {
+            "store": {
+                "address": "Москва, ул. Ленина, 7",
+                "id": "72426c07-a63f-4d06-a6e8-c37cc424dd3b"
+            },
+            "nomenclature": {
+                "nomenclature_group": {
+                    "name": "Еда",
+                    "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                },
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "кг",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "гр",
+                        "base_unit": null,
+                        "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                    },
+                    "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                },
+                "name": "Пшеничная мука",
+                "id": "7f8d840f-d776-488a-aa8b-bc193eed8a83"
+            },
+            "amount": {
+                "value": 50.0,
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "кг",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "гр",
+                        "base_unit": null,
+                        "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+                    },
+                    "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+                },
+                "converted_value": 50000.0,
+                "id": "c1d9ee98-16f7-40a8-bdf1-b0ad945dbd1f"
+            },
+            "transaction_type": null,
+            "time": 1578172082.0,
+            "id": "5668ec35-cbfc-41e5-a47c-70a6350b0047"
+        },
+        "a5201b94-537d-4076-ae94-6ad9f8f9bd2f": {
+            "store": {
+                "address": "Новосибирск, ул. Кирова, 15",
+                "id": "9860b282-4b32-4f18-a005-e48d0b6ab450"
+            },
+            "nomenclature": {
+                "nomenclature_group": {
+                    "name": "Еда",
+                    "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                },
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "л",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "мл",
+                        "base_unit": null,
+                        "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+                    },
+                    "id": "e0901252-b253-4a06-b876-69422efb3451"
+                },
+                "name": "Молоко",
+                "id": "4649694b-355f-418b-a442-6058e11f6961"
+            },
+            "amount": {
+                "value": 1.0,
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "л",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "мл",
+                        "base_unit": null,
+                        "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+                    },
+                    "id": "e0901252-b253-4a06-b876-69422efb3451"
+                },
+                "converted_value": 1000.0,
+                "id": "2e5a18cf-d39f-4251-9b23-7e0ed2383dd6"
+            },
+            "transaction_type": null,
+            "time": 1578172082.0,
+            "id": "a5201b94-537d-4076-ae94-6ad9f8f9bd2f"
+        },
+        "be2489f6-6b35-40f9-9ce6-4fdfd34b9835": {
+            "store": {
+                "address": "Москва, ул. Ленина, 7",
+                "id": "72426c07-a63f-4d06-a6e8-c37cc424dd3b"
+            },
+            "nomenclature": {
+                "nomenclature_group": {
+                    "name": "Еда",
+                    "id": "379dad9f-8dc7-4ed7-abc5-1f0b10f00db4"
+                },
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "л",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "мл",
+                        "base_unit": null,
+                        "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+                    },
+                    "id": "e0901252-b253-4a06-b876-69422efb3451"
+                },
+                "name": "Молоко",
+                "id": "4649694b-355f-418b-a442-6058e11f6961"
+            },
+            "amount": {
+                "value": 1.0,
+                "unit": {
+                    "convertion_ratio": 1000.0,
+                    "name": "л",
+                    "base_unit": {
+                        "convertion_ratio": 1.0,
+                        "name": "мл",
+                        "base_unit": null,
+                        "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+                    },
+                    "id": "e0901252-b253-4a06-b876-69422efb3451"
+                },
+                "converted_value": 1000.0,
+                "id": "6aa6daa9-a693-4839-9b8a-f92f0529b909"
+            },
+            "transaction_type": {},
+            "time": 1578172082.0,
+            "id": "be2489f6-6b35-40f9-9ce6-4fdfd34b9835"
+        }
+    },
+    "MeasurementUnitStorage": {
+        "27323eae-a86d-42f9-a39b-a9f167b36366": {
+            "convertion_ratio": 1.0,
+            "name": "гр",
+            "base_unit": null,
+            "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+        },
+        "e36c8deb-b41f-4c00-858f-ff93aae250d7": {
+            "convertion_ratio": 1000.0,
+            "name": "кг",
+            "base_unit": {
+                "convertion_ratio": 1.0,
+                "name": "гр",
+                "base_unit": null,
+                "id": "27323eae-a86d-42f9-a39b-a9f167b36366"
+            },
+            "id": "e36c8deb-b41f-4c00-858f-ff93aae250d7"
+        },
+        "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa": {
+            "convertion_ratio": 1.0,
+            "name": "шт",
+            "base_unit": null,
+            "id": "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa"
+        },
+        "b605ed18-dc52-40c4-9586-2ff90ba40732": {
+            "convertion_ratio": 10.0,
+            "name": "десяток",
+            "base_unit": {
+                "convertion_ratio": 1.0,
+                "name": "шт",
+                "base_unit": null,
+                "id": "92a6d91c-75cd-4d57-9ea9-8cab3c2ecafa"
+            },
+            "id": "b605ed18-dc52-40c4-9586-2ff90ba40732"
+        },
+        "c10cb358-eef7-4b26-b22c-1c76f32e6f0a": {
+            "convertion_ratio": 1.0,
+            "name": "мл",
+            "base_unit": null,
+            "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+        },
+        "e0901252-b253-4a06-b876-69422efb3451": {
+            "convertion_ratio": 1000.0,
+            "name": "л",
+            "base_unit": {
+                "convertion_ratio": 1.0,
+                "name": "мл",
+                "base_unit": null,
+                "id": "c10cb358-eef7-4b26-b22c-1c76f32e6f0a"
+            },
+            "id": "e0901252-b253-4a06-b876-69422efb3451"
+        }
+    }
+}

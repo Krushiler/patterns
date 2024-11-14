@@ -7,7 +7,10 @@ def _init_managers():
     Di.instance().get_store_manager().init()
     Di.instance().get_recipe_manager().init()
 
+    Di.instance().get_dao().load()
+
 
 if __name__ == '__main__':
     _init_managers()
+
     app.run(port=8080)

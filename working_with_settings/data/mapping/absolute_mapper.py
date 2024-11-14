@@ -1,5 +1,6 @@
 from enum import Enum
 
+from working_with_settings.data.mapping.type_mapping.datetime_mapper import DatetimeMapper
 from working_with_settings.data.mapping.type_mapping.timedelta_mapper import TimedeltaMapper
 from working_with_settings.domain.model.base.base_model import BaseModel
 from typing import get_type_hints, get_args, get_origin
@@ -9,7 +10,8 @@ class AbsoluteMapper:
     _primitives = (bool, str, int, float, type(None))
 
     _mappers = [
-        TimedeltaMapper()
+        TimedeltaMapper(),
+        DatetimeMapper()
     ]
 
     @staticmethod

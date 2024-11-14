@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import TypeVar, Generic
+from typing import TypeVar, Generic, get_args
 
 from working_with_settings.domain.model.base.base_model import BaseModel
 from working_with_settings.domain.model.filter.filter import Filter
@@ -11,15 +11,21 @@ V = TypeVar('V', covariant=True, bound=BaseModel)
 
 
 class BaseStorage(Generic[K, V], ABC):
-    _deletions: EventStream[str]
+    _deletions: EventStream[K]
     _updates: EventStream[V]
+    _type_K: type
+    _type_V: type
 
     def __init__(self):
         self._deletions = EventStream()
         self._updates = EventStream()
 
+    def __init_subclass__(cls, **kwargs):
+        cls._type_K = get_args(cls.__orig_bases__[0])[0]
+        cls._type_V = get_args(cls.__orig_bases__[0])[1]
+
     @property
-    def deletions(self) -> BaseObservable[str]:
+    def deletions(self) -> BaseObservable[K]:
         return self._deletions.as_read_only()
 
     @property
