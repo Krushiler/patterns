@@ -26,9 +26,11 @@ class Settings(BaseModel):
         ReportFormat.RTF: RtfReport
     }
     _blocking_date: datetime.datetime = None
+    _first_start: bool = False
 
     def __init__(self, inn: str = None, bic: str = None, account: str = None, ownership_form: str = None,
-                 default_report_format: ReportFormat = ReportFormat.JSON, blocking_date: datetime.datetime = None):
+                 default_report_format: ReportFormat = ReportFormat.JSON, blocking_date: datetime.datetime = None,
+                 first_start: bool = False):
         super().__init__()
 
         self.inn = inn
@@ -37,6 +39,7 @@ class Settings(BaseModel):
         self.ownership_form = ownership_form
         self.default_report_format = default_report_format
         self.blocking_date = blocking_date
+        self.first_start = first_start
 
     @property
     def inn(self) -> str:
@@ -114,3 +117,13 @@ class Settings(BaseModel):
         if not isinstance(value, datetime.datetime):
             raise InvalidTypeException(datetime.datetime, type(value))
         self._blocking_date = value
+
+    @property
+    def first_start(self) -> bool:
+        return self._first_start
+
+    @first_start.setter
+    def first_start(self, value: bool):
+        if not isinstance(value, bool):
+            raise InvalidTypeException(bool, type(value))
+        self._first_start = value

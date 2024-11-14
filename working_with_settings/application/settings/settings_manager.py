@@ -7,10 +7,14 @@ from working_with_settings.domain.model.organization.settings import Settings
 
 
 class SettingsManager(BaseManager[SettingsState]):
-
     def __init__(self, settings_repository: SettingsRepository):
         super().__init__(SettingsState(settings=self._default_settings()))
         self._settings_repository = settings_repository
+        self.open('settings.json')
+
+    def mark_as_loaded(self):
+        self.state.settings.first_start = False
+        self._settings_repository.save_to_file(self.state.file_name, self.state.settings)
 
     @staticmethod
     def _default_settings() -> Settings:
@@ -19,7 +23,8 @@ class SettingsManager(BaseManager[SettingsState]):
             ownership_form='Ownership',
             bic='Ozwell E. Spencer',
             account='Ozwell E. Spencer',
-            blocking_date=datetime.now()
+            blocking_date=datetime.now(),
+            first_start=True
         )
         return settings
 

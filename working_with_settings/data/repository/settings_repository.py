@@ -30,9 +30,11 @@ class SettingsRepository:
 
         try:
             full_name = os.path.abspath(file_name)
+            if not os.path.exists(full_name):
+                os.makedirs(os.path.dirname(full_name), exist_ok=True)
             with open(full_name, 'w', encoding='utf-8') as f:
-                json_data = AbsoluteMapper.to_dict(settings)
-                json.dump(json_data, f)
+                json_data = SettingsMapper.to_json(settings)
+                json.dump(json_data, f, ensure_ascii=False, indent=4)
 
             return True
         except:

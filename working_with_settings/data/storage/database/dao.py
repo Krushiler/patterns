@@ -1,27 +1,28 @@
-import datetime
 import json
 import os
 
 from working_with_settings.data.mapping.absolute_mapper import AbsoluteMapper
 from working_with_settings.data.serialization.json_serializer import JsonSerializer
-from working_with_settings.util.stream.streams import ValueStream
+from working_with_settings.util.stream.streams import ValueStream, EventStream
 
 
 class Dao:
-    _debounce_time = datetime.timedelta(seconds=1)
-
     _full_name: str
     _data: ValueStream[dict[str, dict]]
+    _data_updates: EventStream[dict[str, dict]]
 
     _json_serializer: JsonSerializer
 
     def __init__(self, file_name, json_serializer):
         self._full_name = os.path.abspath(file_name)
         self._data = ValueStream.seeded({})
+        self._data_updates = EventStream()
         self._json_serializer = json_serializer
-        self.load()
+        self._data_subscription = None
 
-        self._data.subscribe(lambda _: self.flush())
+        self._data_updates.subscribe(lambda _: self.flush())
+
+        self.load()
 
     def flush(self):
         if not os.path.exists(self._full_name):
@@ -42,6 +43,7 @@ class Dao:
         data = self._data.value
         data[key] = AbsoluteMapper.to_dict(value)
         self._data.emit(data)
+        self._data_updates.emit(data)
 
     def get_values(self, key: str, dtype: type) -> dict:
         if key not in self._data.value:
