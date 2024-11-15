@@ -24,18 +24,27 @@ class Dao:
 
         self.load()
 
-    def flush(self):
-        if not os.path.exists(self._full_name):
-            os.makedirs(os.path.dirname(self._full_name), exist_ok=True)
-        with open(self._full_name, 'w', encoding='utf-8') as f:
-            data = json.dumps(self._data.value, ensure_ascii=False, indent=4)
-            f.write(data)
+    def flush(self) -> bool:
+        try:
+            if not os.path.exists(self._full_name):
+                os.makedirs(os.path.dirname(self._full_name), exist_ok=True)
+            with open(self._full_name, 'w', encoding='utf-8') as f:
+                data = json.dumps(self._data.value, ensure_ascii=False, indent=4)
+                f.write(data)
+            return True
+        except:
+            return False
 
-    def load(self):
-        if os.path.exists(self._full_name):
-            with open(self._full_name, 'r', encoding='utf-8') as f:
-                data = json.loads(f.read())
-                self._data.emit(data)
+    def load(self) -> bool:
+        try:
+            if os.path.exists(self._full_name):
+                with open(self._full_name, 'r', encoding='utf-8') as f:
+                    data = json.loads(f.read())
+                    self._data.emit(data)
+                return True
+            return False
+        except:
+            return False
 
     def watch_data(self):
         return self._data.as_read_only()
