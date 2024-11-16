@@ -639,7 +639,7 @@
                 "id": "ea1a318d-fd2b-45f6-866c-0598fecc3566"
             },
             "transaction_type": 1,
-            "time": 1577811909.0,
+            "time": 500000.0,
             "id": "e4b1a191-c828-41e8-b145-ab7a0a5d9c13"
         },
         "e9379e4d-91ec-490a-be68-64873a7d4352": {
@@ -667,7 +667,7 @@
                 "id": "61a12a93-d9ec-4cb7-a627-263acf7142b9"
             },
             "amount": {
-                "value": 50.0,
+                "value": 0.4,
                 "unit": {
                     "convertion_ratio": 1000.0,
                     "name": "кг",
@@ -679,7 +679,7 @@
                     },
                     "id": "c71a4b4f-25ad-4758-9aa2-5df22cb3a9f6"
                 },
-                "converted_value": 50000.0,
+                "converted_value": 4000.0,
                 "id": "ee5bd8fc-4fa8-48ff-bf87-5bf4042747ef"
             },
             "transaction_type": 1,
@@ -711,7 +711,7 @@
                 "id": "61a12a93-d9ec-4cb7-a627-263acf7142b9"
             },
             "amount": {
-                "value": 50.0,
+                "value": 70.0,
                 "unit": {
                     "convertion_ratio": 1000.0,
                     "name": "кг",
@@ -723,7 +723,7 @@
                     },
                     "id": "c71a4b4f-25ad-4758-9aa2-5df22cb3a9f6"
                 },
-                "converted_value": 50000.0,
+                "converted_value": 70000.0,
                 "id": "77854538-1648-4def-8044-e32a7c2bf7da"
             },
             "transaction_type": 1,

@@ -11,7 +11,6 @@ from working_with_settings.domain.model.filter.filter_type import FilterType
 from working_with_settings.domain.model.filter.range_model import RangeModel
 from working_with_settings.domain.model.organization.nomenclature import Nomenclature
 from working_with_settings.domain.model.store.osv_nomenclature_report import OsvNomenclatureReport
-from working_with_settings.domain.model.store.store_turnover import StoreTurnover
 from working_with_settings.util.stream.base.base_observable import StreamSubscription
 
 
@@ -50,19 +49,42 @@ class StoreManager(BaseManager[BaseState]):
             blocking_date: datetime.datetime
     ) -> list[OsvNomenclatureReport]:
 
-        turnovers = self._store_repository.get_turnovers(
+        store_filter = Filter('store.id', store_id, FilterType.EQUALS)
+
+        start_turnovers = self._store_repository.get_turnovers(
             filters=[
-                Filter('time', RangeModel(start_date, end_date), FilterType.BETWEEN),
-                Filter('store.id', store_id, FilterType.EQUALS)
+                Filter(
+                    'time',
+                    RangeModel(datetime.datetime.fromtimestamp(0, tz=datetime.timezone.utc), start_date),
+                    FilterType.BETWEEN
+                ),
+                store_filter
             ],
             grouping=['nomenclature'],
             blocking_date=blocking_date
         )
 
-        reports = []
+        end_turnovers = self._store_repository.get_turnovers(
+            filters=[
+                Filter('time', RangeModel(start_date, end_date), FilterType.BETWEEN),
+                store_filter
+            ],
+            grouping=['nomenclature'],
+            blocking_date=blocking_date
+        )
 
-        for turnover in turnovers:
+        reports = {}
+
+        def get_report(turnover):
             nomenclature = AbsoluteMapper.from_dict(turnover.group['nomenclature'], Nomenclature)
-            reports.append(OsvNomenclatureReport(nomenclature, turnover.turnover))
+            if nomenclature.id not in reports:
+                reports[nomenclature.id] = OsvNomenclatureReport(nomenclature)
+            return reports[nomenclature.id]
 
-        return reports
+        for turnover in start_turnovers:
+            get_report(turnover).start_amount = turnover.turnover
+
+        for turnover in end_turnovers:
+            get_report(turnover).end_amount = turnover.turnover
+
+        return reports.values()
