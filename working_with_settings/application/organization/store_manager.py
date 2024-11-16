@@ -87,4 +87,4 @@ class StoreManager(BaseManager[BaseState]):
         for turnover in end_turnovers:
             get_report(turnover).end_amount = turnover.turnover
 
-        return reports.values()
+        return list(reports.values())
