@@ -11,9 +11,8 @@ from working_with_settings.routing.util.request_parser import RequestParser
 from working_with_settings.routing.util.response_factory import ResponseFactory
 
 
-@app.route('/api/nomenclature/<id>', methods=['PATCH'])
-def update_nomenclature():
-    nomenclature_id = flask.request.args['id']
+@app.route('/api/nomenclature/<nomenclature_id>', methods=['PATCH'])
+def update_nomenclature(nomenclature_id):
     request = RequestParser.parse_body(flask.request.json, Nomenclature)
 
     if request.is_left:
@@ -27,10 +26,8 @@ def update_nomenclature():
     return ResponseFactory.success_no_data()
 
 
-@app.route('/api/nomenclature/<id>', methods=['DELETE'])
-def delete_update_nomenclature():
-    nomenclature_id = flask.request.args['id']
-
+@app.route('/api/nomenclature/<nomenclature_id>', methods=['DELETE'])
+def delete_update_nomenclature(nomenclature_id):
     nomenclature_manager: NomenclatureManager = Di.instance().get_nomenclature_manager()
     result = nomenclature_manager.delete_nomenclature(nomenclature_id)
     if result:
@@ -38,9 +35,8 @@ def delete_update_nomenclature():
     return ResponseFactory.error('Cannot delete this nomenclature', 400)
 
 
-@app.route('/api/nomenclature/<id>', methods=['GET'])
-def get_nomenclature():
-    nomenclature_id = flask.request.args['id']
+@app.route('/api/nomenclature/<nomenclature_id>', methods=['GET'])
+def get_nomenclature(nomenclature_id):
     json_serializer: JsonSerializer = Di.instance().get_json_serializer()
 
     nomenclature_manager: NomenclatureManager = Di.instance().get_nomenclature_manager()

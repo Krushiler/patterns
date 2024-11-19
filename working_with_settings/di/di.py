@@ -13,6 +13,7 @@ from working_with_settings.data.repository.recipe_repository import RecipeReposi
 from working_with_settings.data.repository.settings_repository import SettingsRepository
 from working_with_settings.data.repository.store_repository import StoreRepository
 from working_with_settings.data.serialization.json_serializer import JsonSerializer
+from working_with_settings.data.storage.database.dao import Dao
 from working_with_settings.data.storage.measurement_unit_storage import MeasurementUnitStorage
 from working_with_settings.data.storage.nomenclature_group_storage import NomenclatureGroupStorage
 from working_with_settings.data.storage.nomenclature_storage import NomenclatureStorage
@@ -104,31 +105,35 @@ class Di:
 
     @lazy
     def get_turnover_storage(self) -> TurnoverStorage:
-        return TurnoverStorage()
+        return TurnoverStorage(self.get_dao())
 
     @lazy
     def get_recipe_storage(self) -> RecipeStorage:
-        return RecipeStorage()
+        return RecipeStorage(self.get_dao())
 
     @lazy
     def get_nomenclature_storage(self) -> NomenclatureStorage:
-        return NomenclatureStorage()
+        return NomenclatureStorage(self.get_dao())
 
     @lazy
     def get_measurement_unit_storage(self) -> MeasurementUnitStorage:
-        return MeasurementUnitStorage()
+        return MeasurementUnitStorage(self.get_dao())
 
     @lazy
     def get_nomenclature_group_storage(self) -> NomenclatureGroupStorage:
-        return NomenclatureGroupStorage()
+        return NomenclatureGroupStorage(self.get_dao())
 
     @lazy
     def get_store_storage(self) -> StoreStorage:
-        return StoreStorage()
+        return StoreStorage(self.get_dao())
 
     @lazy
     def get_store_transaction_storage(self) -> StoreTransactionStorage:
-        return StoreTransactionStorage()
+        return StoreTransactionStorage(self.get_dao())
+
+    @lazy
+    def get_dao(self) -> Dao:
+        return Dao(file_name='database.json', json_serializer=self.get_json_serializer())
 
     # endregion
     # region Factories

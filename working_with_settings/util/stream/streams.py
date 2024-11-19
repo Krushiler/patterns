@@ -21,11 +21,13 @@ class ValueStream(BaseStream[T]):
     Холодный поток
     """
     _value: T | None = None
+    _has_data = False
 
     @classmethod
     def seeded(cls, value: T):
         stream = cls()
-        stream.emit(value)
+        stream._value = value
+        stream._has_data = True
         return stream
 
     @property
@@ -33,8 +35,11 @@ class ValueStream(BaseStream[T]):
         return self._value
 
     def emit(self, value: T):
+        self._has_data = True
+        self._value = value
         for subscription in self._subscriptions:
             subscription.call(value)
 
     def _subscribe_internal(self, subscription: StreamSubscription):
-        subscription.call(self.value)
+        if self._has_data:
+            subscription.call(self.value)

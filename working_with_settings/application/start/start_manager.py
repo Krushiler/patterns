@@ -5,6 +5,7 @@ from working_with_settings.data.repository.nomenclature_repository import Nomenc
 from working_with_settings.data.repository.recipe_repository import RecipeRepository
 from working_with_settings.data.repository.store_repository import StoreRepository
 from working_with_settings.data.storage.measurement_unit_storage import MeasurementUnitStorage
+from working_with_settings.domain.model.organization.settings import Settings
 
 
 class StartManager(BaseManager[BaseState]):
@@ -19,7 +20,9 @@ class StartManager(BaseManager[BaseState]):
         self._measurement_units_factory = measurement_units_factory
         self._store_repository = store_repository
 
-    def init(self):
+    def init(self, settings: Settings):
+        if not settings.first_start:
+            return
         self._recipe_repository.init_start_recipes()
         self._nomenclature_repository.init_start_nomenclature()
         self._store_repository.init_start_stores()
