@@ -1,0 +1,21 @@
+version: '1'
+
+services:
+  patterns_1:
+    container_name: patterns_1
+    image: patterns
+    ports:
+      - 8000:8080
+    volumes:
+      - ./data/settings.json:/app/settings.json
+      - ./data/database.json:/app/database.json
+      - ./data/logs.txt:/app/logs.txt
+  patterns_2:
+    container_name: patterns_2
+    image: patterns
+    ports:
+      - 8001:8080
+    volumes:
+      - ./data/settings.json:/app/settings.json
+      - ./data/database.json:/app/database.json
+      - ./data/logs.txt:/app/logs.txt

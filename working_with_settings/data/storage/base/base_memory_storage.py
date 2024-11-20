@@ -4,6 +4,7 @@ from working_with_settings.data.storage.base.base_storage import BaseStorage, K,
 from working_with_settings.data.storage.database.dao import Dao
 from working_with_settings.data.storage.filterer.list_filterer import ListFilterer
 from working_with_settings.domain.model.filter.filter import Filter
+from working_with_settings.util.logging.logger import Logger
 
 
 class BaseMemoryStorage(BaseStorage[K, V], ABC):
@@ -30,9 +31,11 @@ class BaseMemoryStorage(BaseStorage[K, V], ABC):
         return key in self._data
 
     def get(self, key: K) -> V | None:
+        self._dao.load()
         return self._data.get(key)
 
     def get_all(self, offset: int = 0, limit: int | None = None) -> list[V]:
+        self._dao.load()
         values = list(self._data.values())
         if limit is not None:
             values = values[offset:offset + limit]
@@ -43,19 +46,25 @@ class BaseMemoryStorage(BaseStorage[K, V], ABC):
     def create(self, value: V):
         self._data[value.id] = value
         self._commit_to_dao()
+        Logger.info(self._key, f"Created {value.id}")
 
     def _update_internal(self, key: K, value: V):
         self._data[key] = value
         self._commit_to_dao()
+        Logger.info(self._key, f"Updated {value.id}")
 
     def _delete_internal(self, key: K):
         if key in self._data:
             del self._data[key]
+            Logger.info(self._key, f"Deleted {key}")
+        else:
+            Logger.info(self._key, f"Could not delete {key} because it does not exist")
         self._commit_to_dao()
 
     def clear(self):
         self._data.clear()
         self._commit_to_dao()
+        Logger.info(self._key, "Cleared")
 
     def is_empty(self) -> bool:
         return len(self._data) == 0
