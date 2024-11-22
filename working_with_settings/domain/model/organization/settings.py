@@ -10,6 +10,7 @@ from working_with_settings.data.report.json_report import JsonReport
 from working_with_settings.data.report.markdown_report import MarkdownReport
 from working_with_settings.data.report.rtf_report import RtfReport
 from working_with_settings.data.report.xml_report import XmlReport
+from working_with_settings.util.logging.log import LogLevel
 
 
 class Settings(BaseModel):
@@ -27,6 +28,7 @@ class Settings(BaseModel):
     }
     _blocking_date: datetime.datetime = None
     _first_start: bool = False
+    _log_level: LogLevel = LogLevel.INFO
 
     def __init__(self, inn: str = None, bic: str = None, account: str = None, ownership_form: str = None,
                  default_report_format: ReportFormat = ReportFormat.JSON, blocking_date: datetime.datetime = None,
@@ -40,6 +42,16 @@ class Settings(BaseModel):
         self.default_report_format = default_report_format
         self.blocking_date = blocking_date
         self.first_start = first_start
+
+    @property
+    def log_level(self) -> LogLevel:
+        return self._log_level
+
+    @log_level.setter
+    def log_level(self, value: LogLevel):
+        if not isinstance(value, LogLevel):
+            raise InvalidTypeException(LogLevel, type(value))
+        self._log_level = value
 
     @property
     def inn(self) -> str:

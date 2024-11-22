@@ -23,6 +23,7 @@ from working_with_settings.data.storage.store_transaction_storage import StoreTr
 from working_with_settings.data.storage.turnover_storage import TurnoverStorage
 from working_with_settings.data.storage_finder.nomenclature.nomenclature_storage_finder import NomenclatureStorageFinder
 from working_with_settings.di.di_utils import lazy
+from working_with_settings.util.logging.log_writer import LogWriter
 
 
 class Di:
@@ -167,5 +168,13 @@ class Di:
             transaction_storage=self.get_store_transaction_storage(),
             recipe_storage=self.get_recipe_storage()
         )
+
+    # endregion
+
+    # region Util
+
+    @lazy
+    def get_log_writer(self) -> LogWriter:
+        return LogWriter(self.get_settings_manager())
 
     # endregion

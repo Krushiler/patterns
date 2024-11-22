@@ -1,10 +1,10 @@
 import json
 import os
 
-from working_with_settings.data.mapping.absolute_mapper import AbsoluteMapper
-from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException
 from working_with_settings.data.mapping.settings_mapper import SettingsMapper
+from working_with_settings.domain.exceptions.field_exceptions import InvalidTypeException
 from working_with_settings.domain.model.organization.settings import Settings
+from working_with_settings.util.logging.logger import Logger
 
 
 class SettingsRepository:
@@ -38,4 +38,5 @@ class SettingsRepository:
 
             return True
         except:
+            Logger.error(SettingsRepository.__class__.__name__, 'Unable to save settings to file')
             return False

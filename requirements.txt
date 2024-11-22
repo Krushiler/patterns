@@ -1,0 +1,7 @@
+connexion==3.1.0
+connexion[Flask]==3.1.0
+connexion[uvicorn]==3.1.0
+flasgger==0.9.7.1
+Flask==3.1.0
+pytest==7.4.2
+reactivex==4.0.4

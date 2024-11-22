@@ -579,6 +579,76 @@
             },
             "name": "Сливочное масло",
             "id": "e9df4ea9-a2fb-4b15-b8f7-dbab706b10d5"
+        },
+        "9dd1c2c8-6233-4632-9882-78fcef67f64b": {
+            "nomenclature_group": {
+                "name": "Programm",
+                "id": null
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "gb",
+                "base_unit": null,
+                "id": null
+            },
+            "name": "Docker",
+            "id": "9dd1c2c8-6233-4632-9882-78fcef67f64b"
+        },
+        "7b8e4caf-8f32-436d-afb5-afdfc6ade5ed": {
+            "nomenclature_group": {
+                "name": "Programm",
+                "id": null
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "gb",
+                "base_unit": null,
+                "id": null
+            },
+            "name": "Docker",
+            "id": "7b8e4caf-8f32-436d-afb5-afdfc6ade5ed"
+        },
+        "3734757e-4a87-4642-9eba-d1da6bc12e93": {
+            "nomenclature_group": {
+                "name": "Programm",
+                "id": null
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "gb",
+                "base_unit": null,
+                "id": null
+            },
+            "name": "Docker",
+            "id": "3734757e-4a87-4642-9eba-d1da6bc12e93"
+        },
+        "25b1f5ab-b9e0-4440-8ae1-0d705d1af6b8": {
+            "nomenclature_group": {
+                "name": "Programm",
+                "id": null
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "gb",
+                "base_unit": null,
+                "id": null
+            },
+            "name": "Docker",
+            "id": "25b1f5ab-b9e0-4440-8ae1-0d705d1af6b8"
+        },
+        "2ec2f4e5-0714-4e34-a6bd-731c0e4ee801": {
+            "nomenclature_group": {
+                "name": "Programm",
+                "id": null
+            },
+            "unit": {
+                "convertion_ratio": 1000.0,
+                "name": "gb",
+                "base_unit": null,
+                "id": null
+            },
+            "name": "Docker",
+            "id": "2ec2f4e5-0714-4e34-a6bd-731c0e4ee801"
         }
     },
     "NomenclatureGroupStorage": {

@@ -4,6 +4,7 @@ from working_with_settings.application.base.base_manager import BaseManager
 from working_with_settings.application.settings.settings_state import SettingsState
 from working_with_settings.data.repository.settings_repository import SettingsRepository
 from working_with_settings.domain.model.organization.settings import Settings
+from working_with_settings.util.logging.logger import Logger
 
 
 class SettingsManager(BaseManager[SettingsState]):
@@ -36,6 +37,7 @@ class SettingsManager(BaseManager[SettingsState]):
             return True
         except Exception as e:
             print(f'Unable to load from file {file_name}', e, sep='\n')
+            Logger.error(self.__class__.__name__, f'Unable to load from file {file_name}, {e}')
             self.state = SettingsState(
                 settings=self._default_settings(),
                 error=e,
